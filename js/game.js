@@ -150,8 +150,8 @@ gameScene.gameOver = function() {
 // our game's configuration
 let config = {
   type: Phaser.AUTO,  //Phaser will decide how to render our game (WebGL or Canvas)
-  width: 640, // game width
-  height: 360, // game height
+  width: 1000, // game width
+  height: 1000, // game height
   scene: gameScene, // our newly created scene
 };
 
