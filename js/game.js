@@ -133,6 +133,11 @@ class gameScene extends Phaser.Scene {
       }
   
 }
+
+  gameOver() {
+    this.player.x = 40;
+    this.player.y = this.sys.game.config.height / 2;
+  }
 }
 
 // our game's configuration
