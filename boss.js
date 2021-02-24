@@ -1,21 +1,59 @@
-constructor() {
+
+class gameScene extends Phaser.Scene {
+    constructor() {
         super({
             key: 'gameScene',
             active: true
         });
-
+    
         this.cursor = new Phaser.Math.Vector2();
-
+    
         this.playerSpeed = 0.1;
-        this.enemyMaxY = 280;
-        this.enemyMinY = 80;
+        this.enemyMaxY = 1200;
+        this.enemyMinY = 20;
     }
+    
+    preload() {
+        this.load.image('background', 'pictures/bossbackground1.JPG');
+        this.load.image('boss', 'pictures/garflief.JPG');
+        this.load.image('player', 'assets/pipo-nekonin001.png');
+        this.load.spritesheet('boss', 'pictures/garflief.JPG', {
 
-create() {
+            frameWidth: 120,
+
+            frameHeight: 190,
+
+        });
+        this.load.spritesheet('player', 'pictures/pipo-nekonin001.png', {
+
+            frameWidth: 32,
+
+            frameHeight: 32
+
+        });
+    }
+    create() {
+
+       // background
+       let bg = this.add.sprite(0, 0, 'background');
+
+       // change origin to the top-left of the sprite
+       bg.setOrigin(0, 0);
+
+       // player
+       //this.player = this.add.sprite(40, this.sys.game.config.height / 2, 'player');
+       this.player = this.physics.add.sprite(
+           40, // x position
+           this.sys.game.config.height / 2, // y position
+           'player', // key of image for the sprite
+       );
+
+       // scale down
+       this.player.setScale(1);
        
         this.enemies = this.add.group({
-            key: 'teach1',
-            repeat: 1,
+            key: 'boss',
+            repeat: 0,
             setXY: {
                 x: 110,
                 y: 100,
@@ -23,21 +61,57 @@ create() {
                 stepY: 20
             }
         });
-
+    
         // scale enemies
-        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.2, 0.2);
+        Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
+    
+       // set speeds
+       Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
+        enemy.speed = Math.random() * 2 + 1;
+    }, this);
 
-        // set speeds
-        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-            enemy.speed = Math.random() * 2 + 1;
-        }, this);
+    // player is alive
+    this.isPlayerAlive = true;
 
-        this.player.setCollideWorldBounds(true);
-        //this.player.setBounce(1, 1);
+    // reset camera effects
+    this.cameras.main.resetFX();
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.player.setCollideWorldBounds(true);
+    //this.player.setBounce(1, 1);
     }
+    
+    update() {
 
- update() {
-       
+        this.player.body.setVelocityX(0);
+        this.player.body.setVelocityY(0);
+
+        if (this.cursors.left.isDown) {
+            this.player.body.setVelocityX(-350);
+        }
+        if (this.cursors.right.isDown) {
+            this.player.body.setVelocityX(350);
+        }
+        if (this.cursors.up.isDown) {
+            this.player.body.setVelocityY(-350);
+        }
+        if (this.cursors.down.isDown) {
+            this.player.body.setVelocityY(350);
+        }
+
+        // only if the player is alive
+        if (!this.isPlayerAlive) {
+            return;
+        }
+
+        // check for active input
+        if (this.input.activePointer.isDown) {
+
+            // player walks
+            this.player.x += this.playerSpeed;
+        }
+
         // enemy movement
         let enemies = this.enemies.getChildren();
         let numEnemies = enemies.length;
@@ -45,12 +119,12 @@ create() {
         for (let i = 0; i < numEnemies; i++) {
 
             // move enemies
-            enemies[i].y += enemies[i].speed;
+            enemies[i].x += enemies[i].speed;
 
             // reverse movement if reached the edges
-            if (enemies[i].y >= this.enemyMaxY && enemies[i].speed > 0) {
+            if (enemies[i].x >= this.enemyMaxY && enemies[i].speed > 0) {
                 enemies[i].speed *= -1;
-            } else if (enemies[i].y <= this.enemyMinY && enemies[i].speed < 0) {
+            } else if (enemies[i].x <= this.enemyMinY && enemies[i].speed < 0) {
                 enemies[i].speed *= -1;
             }
 
@@ -60,14 +134,15 @@ create() {
                 break;
             }
         }
-
-    }
     
-    // our game's configuration
+}
+}
+
+// our game's configuration
 let config = {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-    width: 640, // game width
-    height: 360, // game height
+    width: 1800, // game width
+    height: 900, // game height
     scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
@@ -76,7 +151,7 @@ let config = {
             gravity: false
         }
     }
-};
-
-// create the game, and pass it the configuration
-let game = new Phaser.Game(config);
+    };
+    
+    // create the game, and pass it the configuration
+    let game = new Phaser.Game(config);
