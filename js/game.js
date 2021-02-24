@@ -14,13 +14,7 @@ class gameScene extends Phaser.Scene {
   
   preload() {
       this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.spritesheet('boss', 'img/garflief.JPG', {
-
-          frameWidth: 120,
-
-          frameHeight: 190,
-
-      });
+      this.load.image('boss', 'img/Eckerle Sprite.PNG');
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
           frameWidth: 120,
