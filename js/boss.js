@@ -14,17 +14,17 @@ class gameScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'pictures/bossbackground1.JPG');
-        this.load.image('boss', 'pictures/garflief.JPG');
-        this.load.image('player', 'assets/pipo-nekonin001.png');
-        this.load.spritesheet('boss', 'pictures/garflief.JPG', {
+        this.load.image('background', 'img/bossbackground1.JPG');
+        this.load.image('boss', 'img/garflief.JPG');
+        this.load.image('player', 'img/pipo-nekonin001.png');
+        this.load.spritesheet('boss', 'img/garflief.JPG', {
 
             frameWidth: 120,
 
             frameHeight: 190,
 
         });
-        this.load.spritesheet('player', 'pictures/pipo-nekonin001.png', {
+        this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
 
             frameWidth: 32,
 
