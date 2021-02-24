@@ -139,7 +139,7 @@ class gameScene extends Phaser.Scene {
 let config = {
   type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
   width: 1350, // game width
-  height: 800, // game height
+  height: 750, // game height
   scene: gameScene, // our newly created scene
   parent: 'main-game',
   physics: {
