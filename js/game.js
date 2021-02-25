@@ -11,7 +11,7 @@ class gameScene extends Phaser.Scene {
   }
   
   preload() {
-      this.load.image('background', 'img/CoopandHeston background.webp');
+      this.load.image('background', 'img/Eck background.jpg');
       this.load.image('boss', 'img/Eckerle Sprite.PNG');
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
