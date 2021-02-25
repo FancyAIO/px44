@@ -14,13 +14,7 @@ class gameScene extends Phaser.Scene {
   
   preload() {
       this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.spritesheet('boss', 'img/garflief.JPG', {
-
-          frameWidth: 120,
-
-          frameHeight: 190,
-
-      });
+      this.load.image('boss', 'img/Eckerle Sprite.PNG');
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
           frameWidth: 120,
@@ -58,6 +52,7 @@ class gameScene extends Phaser.Scene {
               stepY: 20
           }
       });
+
   
       // scale enemies
       Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
@@ -133,6 +128,11 @@ class gameScene extends Phaser.Scene {
       }
   
 }
+
+  gameOver() {
+    this.player.x = 40;
+    this.player.y = this.sys.game.config.height / 2;
+  }
 }
 
 // our game's configuration
