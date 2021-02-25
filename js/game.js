@@ -12,7 +12,8 @@ class gameScene extends Phaser.Scene {
   
   preload() {
     this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.image('boss', 'img/Eckerle Sprite.PNG');
+      this.load.image('eck', 'img/Eckerle Sprite.PNG');
+      this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
           frameWidth: 120,
@@ -29,24 +30,15 @@ class gameScene extends Phaser.Scene {
     // player
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
-     this.player.setScale(1);
+     this.player.setScale(0.5);
      // enemies
-      this.enemies = this.add.group({
-          key: 'boss',
-          repeat: 0,
-          setXY: {
-              x: 110,
-              y: 100,
-              stepX: 80,
-              stepY: 20
-          }
-      });
-      // scale enemies
-      Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
-     // set speeds
-     Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-      enemy.speed = Math.random() * 2 + 1;
-  }, this);
+      this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
+      this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
+      this.eck.setScale(2);
+      this.bushek.setScale(2);
+    
+
+      
   // player is alive
   this.isPlayerAlive = true;
   // reset camera effects
@@ -83,23 +75,15 @@ class gameScene extends Phaser.Scene {
           // player walks
           this.player.x += this.playerSpeed;
       }
-      // enemy movement
-      let enemies = this.enemies.getChildren();
-      let numEnemies = enemies.length;
-      for (let i = 0; i < numEnemies; i++) {
-          // move enemies
-          enemies[i].x += enemies[i].speed;
-          // reverse movement if reached the edges
-          if (enemies[i].x >= this.enemyMaxY && enemies[i].speed > 0) {
-              enemies[i].speed *= -1;
-          } else if (enemies[i].x <= this.enemyMinY && enemies[i].speed < 0) {
-              enemies[i].speed *= -1;
-          }
-          // enemy collision
-          if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
-              this.gameOver();
-              break;
-          }
+      //eck collision
+      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
+        this.gameOver();
+       
+      }
+     //bushek collision
+     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
+        this.gameOver();
+       
       }
 }
 
