@@ -52,6 +52,8 @@ class gameScene extends Phaser.Scene {
               stepY: 20
           }
       });
+
+      this.boss.setScale(4);
   
       // scale enemies
       Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
