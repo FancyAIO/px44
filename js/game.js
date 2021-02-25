@@ -11,7 +11,7 @@ class gameScene extends Phaser.Scene {
   }
   
   preload() {
-      this.load.image('background', 'img/Eck background.jpg');
+    this.load.image('background', 'img/Eck background.jpg');
       this.load.image('boss', 'img/Eckerle Sprite.PNG');
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
@@ -126,3 +126,5 @@ let config = {
   
   // create the game, and pass it the configuration
   let game = new Phaser.Game(config);
+
+  
