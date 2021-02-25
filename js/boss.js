@@ -77,6 +77,8 @@ class gameScene extends Phaser.Scene {
     this.cameras.main.resetFX();
 
     this.cursors = this.input.keyboard.createCursorKeys();
+    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
 
     this.player.setCollideWorldBounds(true);
     //this.player.setBounce(1, 1);
@@ -98,6 +100,9 @@ class gameScene extends Phaser.Scene {
         }
         if (this.cursors.down.isDown) {
             this.player.body.setVelocityY(350);
+        }
+        if (this.spaceKey.isDown) {
+            this.player.setVelocityY(350);
         }
 
         // only if the player is alive
