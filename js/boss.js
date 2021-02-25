@@ -15,8 +15,6 @@ class gameScene extends Phaser.Scene {
     
     preload() {
         this.load.image('background', 'img/bossbackground1.JPG');
-        this.load.image('boss', 'img/garflief.JPG');
-        this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.spritesheet('boss', 'img/garflief.JPG', {
 
             frameWidth: 120,
@@ -63,7 +61,7 @@ class gameScene extends Phaser.Scene {
         });
     
         // scale enemies
-        Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
+        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.2, 0.2);
     
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
@@ -77,7 +75,7 @@ class gameScene extends Phaser.Scene {
     this.cameras.main.resetFX();
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.spaceKey = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
     this.player.setCollideWorldBounds(true);
@@ -102,7 +100,7 @@ class gameScene extends Phaser.Scene {
             this.player.body.setVelocityY(350);
         }
         if (this.spaceKey.isDown) {
-            this.player.setVelocityY(350);
+            this.player.body.setVelocityY(350);
         }
 
         // only if the player is alive
