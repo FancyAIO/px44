@@ -92,7 +92,6 @@ class gameScene extends Phaser.Scene {
     this.player.y = this.sys.game.config.height / 2;
   }
 }
-
 // our game's configuration
 let config = {
   type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
@@ -110,5 +109,3 @@ let config = {
   
   // create the game, and pass it the configuration
   let game = new Phaser.Game(config);
-
-  
