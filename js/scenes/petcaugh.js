@@ -1,7 +1,7 @@
 class petcaughScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'petcaughScene',
             active: true
         });
         this.cursor = new Phaser.Math.Vector2();

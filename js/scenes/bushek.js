@@ -1,7 +1,7 @@
 class bushekScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'bushekScene',
             active: true
         });
         this.cursor = new Phaser.Math.Vector2();

@@ -1,7 +1,7 @@
 class eckerleScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'eckerleScene',
             active: true
         });
         this.cursor = new Phaser.Math.Vector2();

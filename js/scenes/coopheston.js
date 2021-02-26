@@ -1,7 +1,7 @@
 class coophestonScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'coophestonScene',
             active: true
         });
         this.cursor = new Phaser.Math.Vector2();
