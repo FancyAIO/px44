@@ -1,4 +1,4 @@
-class gameScene extends Phaser.Scene {
+class eckerleScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'gameScene',
@@ -75,15 +75,15 @@ class gameScene extends Phaser.Scene {
               this.player.x += this.playerSpeed;
           }
           //eck collision
-          if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
-            this.gameOver();
-            this.scene.start("SceneTwo");
-          }
-         //bushek collision
-         if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
-            this.gameOver();
-            this.scene.start("SceneTwo");
-          }
+      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
+        this.gameOver();
+        this.scene.start("coophestonScene");
+      }
+     //bushek collision
+     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
+        this.gameOver();
+        this.scene.start("petcaughScene");
+      }
     }
   
     gameOver() {
@@ -97,7 +97,7 @@ class gameScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: gameScene, // our newly created scene
+    scene: eckerleScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',

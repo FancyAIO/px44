@@ -1,4 +1,4 @@
-class gameScene extends Phaser.Scene {
+class coophestonScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'gameScene',
@@ -11,7 +11,7 @@ class gameScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/bossbackground1.JPG');
+        this.load.image('background', 'img/CoopandHeston background.webp');
       this.load.image('eck', 'img/Eckerle Sprite.PNG');
       this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
@@ -24,16 +24,19 @@ class gameScene extends Phaser.Scene {
   }
   
     create() {
-        bg.setOrigin(0, 0);
-        // player
-         this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
-         // scale down player
-         this.player.setScale(0.5);
-         // enemies
-          this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
-          this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
-          this.eck.setScale(2);
-          this.bushek.setScale(2);
+        // background
+       let bg = this.add.sprite(0, 0, 'background');
+       bg.setOrigin(0, 0);
+    // player
+     this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
+     // scale down player
+     this.player.setScale(0.5);
+     // enemies
+      this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
+      this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
+      this.eck.setScale(2);
+      this.bushek.setScale(2);
+    
         
     
         // player is alive
@@ -73,15 +76,15 @@ class gameScene extends Phaser.Scene {
                   this.player.x += this.playerSpeed;
               }
               //eck collision
-              if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
-                this.gameOver();
-                this.scene.start("SceneTwo");
-              }
-             //bushek collision
-             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
-                this.gameOver();
-                this.scene.start("SceneTwo");
-              }
+      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
+        this.gameOver();
+        this.scene.start("coophestonScene");
+      }
+     //bushek collision
+     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
+        this.gameOver();
+        this.scene.start("petcaughScene");
+      }
         }
   
     gameOver() {
@@ -95,7 +98,7 @@ class gameScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: gameScene, // our newly created scene
+    scene: coophestonScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',

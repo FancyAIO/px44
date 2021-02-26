@@ -78,12 +78,12 @@ class gameScene extends Phaser.Scene {
       //eck collision
       if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
         this.gameOver();
-       
+        this.scene.start("coophestonScene");
       }
      //bushek collision
      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
         this.gameOver();
-       
+        this.scene.start("petcaughScene");
       }
 }
 

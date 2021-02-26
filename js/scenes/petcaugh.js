@@ -1,4 +1,4 @@
-class gameScene extends Phaser.Scene {
+class petcaughScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'gameScene',
@@ -11,7 +11,7 @@ class gameScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/bossbackground1.JPG');
+        this.load.image('background', 'img/petclaw backgroundJPG');
       this.load.image('eck', 'img/Eckerle Sprite.PNG');
       this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
@@ -77,12 +77,12 @@ class gameScene extends Phaser.Scene {
       //eck collision
       if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
         this.gameOver();
-        this.scene.start("SceneTwo");
+        this.scene.start("coophestonScene");
       }
      //bushek collision
      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
         this.gameOver();
-        this.scene.start("SceneTwo");
+        this.scene.start("petcaughScene");
       }
 }
   
@@ -97,7 +97,7 @@ class gameScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: gameScene, // our newly created scene
+    scene: petcaughScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',
