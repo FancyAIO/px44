@@ -1,4 +1,4 @@
-class bushekScene extends Phaser.Scene {
+class gameScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'bushekScene',
@@ -97,7 +97,7 @@ class bushekScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: bushekScene, // our newly created scene
+    scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',
@@ -108,5 +108,5 @@ class bushekScene extends Phaser.Scene {
     };
     
     // create the game, and pass it the configuration
-    let game = new Phaser.Game(config);
+    let game= new Phaser.Game(config);
   

@@ -1,4 +1,4 @@
-class eckerleScene extends Phaser.Scene {
+class gameScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'eckerleScene',
@@ -97,7 +97,7 @@ class eckerleScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: eckerleScene, // our newly created scene
+    scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',

@@ -1,4 +1,4 @@
-class coophestonScene extends Phaser.Scene {
+class gameScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'coophestonScene',
@@ -98,7 +98,7 @@ class coophestonScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: coophestonScene, // our newly created scene
+    scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',

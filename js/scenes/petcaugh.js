@@ -1,4 +1,4 @@
-class petcaughScene extends Phaser.Scene {
+class gameScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'petcaughScene',
@@ -11,7 +11,7 @@ class petcaughScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/petclaw backgroundJPG');
+      this.load.image('background', 'img/petclaw background.JPG');
       this.load.image('eck', 'img/Eckerle Sprite.PNG');
       this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
@@ -97,7 +97,7 @@ class petcaughScene extends Phaser.Scene {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: petcaughScene, // our newly created scene
+    scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',
