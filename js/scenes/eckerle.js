@@ -80,10 +80,10 @@ class eckerleScene extends Phaser.Scene {
         this.scene.start("coophestonScene");
       }
      //bushek collision
-     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
-        this.gameOver();
-        this.scene.start("petcaughScene");
-      }
+     //if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
+        //this.gameOver();
+        //this.scene.start("petcaughScene");
+      //}
     }
   
     gameOver() {
