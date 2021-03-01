@@ -58,7 +58,6 @@ class eckerleScene extends Phaser.Scene {
     this.cameras.main.resetFX();
     // sets up keyboard binds
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.spaceKey = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     // setting world bounds function
     this.player.setCollideWorldBounds(true);
     }
