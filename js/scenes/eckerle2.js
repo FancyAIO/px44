@@ -14,22 +14,23 @@ class gameScene extends Phaser.Scene {
     
     preload() {
         this.load.image('background', 'img/bossbackground1.JPG');
-        //this.load.image('boss', 'img/garflief.JPG');
+        this.load.image('boss', 'img/Eckerle Sprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.spritesheet('boss', 'img/garflief.JPG', {
+        this.load.image('block', 'img/block.png');
+        this.load.spritesheet('player', 'img/garflief.JPG', {
 
             frameWidth: 120,
 
             frameHeight: 190,
 
         });
-        this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
+        //this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
 
-            frameWidth: 32,
+            //frameWidth: 32,
 
-            frameHeight: 32
+            //frameHeight: 32
 
-        });
+        //});
     }
     create() {
 
@@ -39,16 +40,28 @@ class gameScene extends Phaser.Scene {
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
 
-       // player
-       //this.player = this.add.sprite(40, this.sys.game.config.height / 2, 'player');
-       this.player = this.physics.add.sprite(
-           40, // x position
-           this.sys.game.config.height / 2, // y position
-           'player', // key of image for the sprite
-       );
+       this.power=0;
+
+         //define our objects
+         let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
+         this.player = player
+         //set the gravity
+         player.setGravityY(300);
+         //place the ground
+         let groundX = this.sys.game.config.width / 2;
+         let groundY = this.sys.game.config.height * .99;
+         let ground = this.physics.add.sprite(groundX, groundY, "block");
+         //size the ground
+         ground.displayWidth = this.sys.game.config.width * 1.1;
+         //make the ground stay in place
+         ground.setImmovable();
+         //add the colliders
+         this.physics.add.collider(player, ground);
+         this.input.on('pointerdown', this.startJump, this);
+         this.input.on('pointerup', this.endJump, this);
 
        // scale down
-       this.player.setScale(1);
+       this.player.setScale(0.4);
        
         this.enemies = this.add.group({
             key: 'boss',
@@ -62,7 +75,7 @@ class gameScene extends Phaser.Scene {
         });
     
         // scale enemies
-        Phaser.Actions.ScaleXY(this.enemies.getChildren(), -0.2, -0.2);
+        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 2, 2);
     
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
@@ -92,12 +105,12 @@ class gameScene extends Phaser.Scene {
         if (this.cursors.right.isDown) {
             this.player.body.setVelocityX(350);
         }
-        if (this.cursors.up.isDown) {
-            this.player.body.setVelocityY(-350);
-        }
-        if (this.cursors.down.isDown) {
-            this.player.body.setVelocityY(350);
-        }
+        //if (this.cursors.up.isDown) {
+            //this.player.body.setVelocityY(-350);
+        //}
+        //if (this.cursors.down.isDown) {
+            //this.player.body.setVelocityY(350);
+        //}
 
         // only if the player is alive
         if (!this.isPlayerAlive) {
@@ -134,6 +147,26 @@ class gameScene extends Phaser.Scene {
             }
         }
     
+}
+    startJump() {
+        this.timer = this.time.addEvent({
+            delay: 100,
+            callback: this.tick,
+            callbackScope: this,
+            loop: true
+        });
+    // this.player.setVelocityY(-100);
+}
+    endJump() {
+        this.timer.remove();
+        this.player.setVelocityY(-this.power * 100);
+        this.power = 0;
+}
+    tick() {
+        if (this.power < 5) {
+            this.power += .1;
+            console.log(this.power);
+        }
 }
 }
 
