@@ -1,17 +1,17 @@
-class gameScene extends Phaser.Scene {
-  constructor() {
-      super({
-          key: 'gameScene',
-          active: true
-      });
-      this.cursor = new Phaser.Math.Vector2();
-      this.playerSpeed = 0.1;
-      this.enemyMaxY = 1200;
-      this.enemyMinY = 20;
-  }
-  
-  preload() {
-    this.load.image('background', 'img/bossbackground1.JPG');
+class petcaughScene extends Phaser.Scene {
+    constructor() {
+        super({
+            key: 'petcaughScene',
+            active: true
+        });
+        this.cursor = new Phaser.Math.Vector2();
+        this.playerSpeed = 0.1;
+        this.enemyMaxY = 1200;
+        this.enemyMinY = 20;
+    }
+    
+    preload() {
+      this.load.image('background', 'img/petclaw background.JPG');
       this.load.image('eck', 'img/Eckerle Sprite.PNG');
       this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
@@ -22,11 +22,11 @@ class gameScene extends Phaser.Scene {
 
       });
   }
-
-  create() {
-     // background
-     let bg = this.add.sprite(0, 0, 'background');
-     bg.setOrigin(0, 0);
+  
+    create() {
+       // background
+       let bg = this.add.sprite(0, 0, 'background');
+       bg.setOrigin(0, 0);
     // player
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
@@ -38,18 +38,17 @@ class gameScene extends Phaser.Scene {
       this.bushek.setScale(2);
     
 
-      
-  // player is alive
-  this.isPlayerAlive = true;
-  // reset camera effects
-  this.cameras.main.resetFX();
-  // sets up keyboard binds
-  this.cursors = this.input.keyboard.createCursorKeys();
-  // setting world bounds function
-  this.player.setCollideWorldBounds(true);
-  }
-  
-  update() {
+    // player is alive
+    this.isPlayerAlive = true;
+    // reset camera effects
+    this.cameras.main.resetFX();
+    // sets up keyboard binds
+    this.cursors = this.input.keyboard.createCursorKeys();
+    // setting world bounds function
+    this.player.setCollideWorldBounds(true);
+    }
+
+    update() {
     // setting velocity variables
       this.player.body.setVelocityX(0);
       this.player.body.setVelocityY(0);
@@ -83,29 +82,31 @@ class gameScene extends Phaser.Scene {
      //bushek collision
      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
         this.gameOver();
-        this.scene.start('petcaughScene');
+        this.scene.start("petcaughScene");
       }
 }
-
-  gameOver() {
-    this.player.x = 40;
-    this.player.y = this.sys.game.config.height / 2;
-  }
-}
-// our game's configuration
-let config = {
-  type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-  width: 1350, // game width
-  height: 750, // game height
-  scene: gameScene, // our newly created scene
-  parent: 'main-game',
-  physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: false
-      }
-  }
-  };
   
-  // create the game, and pass it the configuration
-  let game = new Phaser.Game(config);
+    gameOver() {
+      this.player.x = 40;
+      this.player.y = this.sys.game.config.height / 2;
+    }
+  }
+  
+  // our game's configuration
+  let config = {
+    type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
+    width: 1350, // game width
+    height: 750, // game height
+    scene: petcaughScene, // our newly created scene
+    parent: 'main-game',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: false
+        }
+    }
+    };
+    
+    // create the game, and pass it the configuration
+    let game = new Phaser.Game(config);
+  
