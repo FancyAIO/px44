@@ -46,7 +46,7 @@ class gameScene extends Phaser.Scene {
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
          this.player = player
          //set the gravity
-         player.setGravityY(300);
+         player.setGravityY(9999);
          //place the ground
          let groundX = this.sys.game.config.width / 2;
          let groundY = this.sys.game.config.height * .99;
@@ -67,8 +67,8 @@ class gameScene extends Phaser.Scene {
             key: 'boss',
             repeat: 0,
             setXY: {
-                x: 110,
-                y: 700,
+                x: 100,
+                y: 815,
                 stepX: 80,
                 stepY: 20
             }
@@ -118,11 +118,11 @@ class gameScene extends Phaser.Scene {
         }
 
         // check for active input
-        if (this.input.activePointer.isDown) {
+        // if (this.input.activePointer.isDown) {
 
-            // player walks
-            this.player.x += this.playerSpeed;
-        }
+        //     // player walks
+        //     this.player.x += this.playerSpeed;
+        // }
 
         // enemy movement
         let enemies = this.enemies.getChildren();
@@ -163,8 +163,8 @@ class gameScene extends Phaser.Scene {
         this.power = 0;
 }
     tick() {
-        if (this.power < 5) {
-            this.power += .1;
+        if (this.power < 50000) {
+            this.power += 100;
             console.log(this.power);
         }
 }
