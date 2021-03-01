@@ -36,7 +36,21 @@ class eckerleScene extends Phaser.Scene {
       //this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
       this.eck.setScale(2);
       //this.bushek.setScale(2);
+
+      this.enemies = this.add.group({
+        key: 'eck',
+        repeat: 0,
+        setXY: {
+            x: 110,
+            y: 700,
+            stepX: 80,
+            stepY: 20
+        }
+    });
     
+    Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
+      enemy.speed = Math.random() * 2 + 1;
+  }, this);
 
     // player is alive
     this.isPlayerAlive = true;
@@ -85,11 +99,20 @@ class eckerleScene extends Phaser.Scene {
         //this.scene.start("petcaughScene");
       //}
     }
-  
-    gameOver() {
-      this.player.x = 40;
-      this.player.y = this.sys.game.config.height / 2;
-    }
+  }
+   
+    for (let i = 0; i < numEnemies; i++) {
+
+      // move enemies
+      enemies[i].x += enemies[i].speed;
+
+      // reverse movement if reached the edges
+      if (enemies[i].x >= this.enemyMaxY && enemies[i].speed > 0) {
+          enemies[i].speed *= -1;
+      } else if (enemies[i].x <= this.enemyMinY && enemies[i].speed < 0) {
+          enemies[i].speed *= -1;
+      }
+
   }
   
   // our game's configuration
