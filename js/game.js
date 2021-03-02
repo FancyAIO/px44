@@ -8,6 +8,8 @@ class gameScene extends Phaser.Scene {
       this.playerSpeed = 0.1;
       this.enemyMaxY = 1200;
       this.enemyMinY = 20;
+      this.atMenu = true;
+      this.createdMenu = false
   }
   
   preload() {
@@ -122,16 +124,16 @@ class gameScene extends Phaser.Scene {
       this.player.body.setVelocityX(0);
       this.player.body.setVelocityY(0);
     // keybinds' actions
-      if (this.cursors.left.isDown) {
+      if (this.cursors.left.isDown && !this.atMenu) {
           this.player.body.setVelocityX(-350);
       }
-      if (this.cursors.right.isDown) {
+      if (this.cursors.right.isDown && !this.atMenu) {
           this.player.body.setVelocityX(350);
       }
-      if (this.cursors.up.isDown) {
+      if (this.cursors.up.isDown && !this.atMenu) {
           this.player.body.setVelocityY(-350);
       }
-      if (this.cursors.down.isDown) {
+      if (this.cursors.down.isDown && !this.atMenu) {
           this.player.body.setVelocityY(350);
       }
       // only if the player is alive
@@ -153,6 +155,49 @@ class gameScene extends Phaser.Scene {
         this.gameOver();
         this.scene.start('petcaughScene');
       }
+
+      let rect;
+      let text;
+      let title;
+
+        // loop displays menu and checks if player clicked button
+        if (this.atMenu) {
+          window.setInterval(menu, 100, this);
+        }
+
+      // stops the loop
+      if (!this.atMenu) {
+        window.clearInterval();
+      }
+    
+
+
+
+
+    function menu(scene) {
+
+      // displays menu
+        if (!scene.createdMenu) {
+          rect = scene.add.rectangle(675, 400, 300, 150, 0x00ff00).setStrokeStyle(4, 0x000000);
+          text = scene.add.text(623, 375, 'Start', { font: "45px Arial", fill: "#000000" });
+          title = scene.add.text(600, 125, 'PX44', { font: "65px Arial", fill: "#000000" });
+          scene.createdMenu = true;
+        }
+         
+
+      // checks if player clicked button
+      if (scene.input.activePointer.isDown &&
+          scene.input.mousePointer.x > 675) {
+        rect.destroy();
+        text.destroy();
+        title.destroy();
+        scene.atMenu = false;
+      }
+    }
+    
+
+      
+
 }
 
   gameOver() {
