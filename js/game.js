@@ -78,7 +78,8 @@ class gameScene extends Phaser.Scene {
       this.enemyMaxY = 1200;
       this.enemyMinY = 20;
       this.atMenu = true;
-      this.createdMenu = false
+      this.createdMenu = false;
+      this.destroyedMenu = false;
   }
   
   preload() {
@@ -229,15 +230,21 @@ class gameScene extends Phaser.Scene {
       let rect;
       let text;
       let title;
-
+      let intervalID;
         // loop displays menu and checks if player clicked button
-        if (this.atMenu) {
-          window.setInterval(menu, 100, this);
+
+        if (!this.createdMenu) {
+          intervalID = window.setInterval(menu, 100, this);
+          this.createdMenu = false;
         }
 
       // stops the loop
-      if (!this.atMenu) {
-        window.clearInterval();
+      if (!this.atMenu && !this.destroyedMenu) {
+        for (let i = 1; i < 8; i++) {
+          window.clearInterval(i);
+        } 
+
+        this.destroyedMenu = true;
       }
     
 
@@ -257,7 +264,10 @@ class gameScene extends Phaser.Scene {
 
       // checks if player clicked button
       if (scene.input.activePointer.isDown &&
-          scene.input.mousePointer.x > 675) {
+          scene.input.mousePointer.x > 525 &&
+          scene.input.mousePointer.x < 835 &&
+          scene.input.mousePointer.y > 325 &&
+          scene.input.mousePointer.y < 475) {
         rect.destroy();
         text.destroy();
         title.destroy();
@@ -290,4 +300,6 @@ let config = {
   }
   };
   
+   // create the game, and pass it the configuration
+   let game = new Phaser.Game(config); 
   
