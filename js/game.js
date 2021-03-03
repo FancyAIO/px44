@@ -85,7 +85,7 @@ class gameScene extends Phaser.Scene {
   preload() {
     this.load.image('background', 'img/bossbackground1.JPG');
       this.load.image('eck', 'img/Eckerle Sprite.PNG');
-      this.load.image('bushek', 'img/Bushek Sprite.PNG')
+      this.load.image('bushek', 'img/3.0 BUSHEK.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
           frameWidth: 120,
@@ -105,9 +105,9 @@ class gameScene extends Phaser.Scene {
      this.player.setScale(0.5);
      // enemies
       this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
-      this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
+      this.bushek = this.physics.add.sprite(800, this.sys.game.config.height / 2, 'bushek',);
       this.eck.setScale(2);
-      this.bushek.setScale(2);
+      this.bushek.setScale(1);
     
 
       
@@ -178,7 +178,6 @@ class gameScene extends Phaser.Scene {
   f9Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F9);
   f10Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F10);
   f11Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F11);
-  f12Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F12);
   forwardslashKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FORWARD_SLASH);
   minusKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.MINUS);
   periodKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PERIOD);
@@ -198,8 +197,14 @@ class gameScene extends Phaser.Scene {
       if (this.cursors.left.isDown && !this.atMenu) {
           this.player.body.setVelocityX(-350);
       }
+      if (aKey.isDown && !this.atMenu) {
+        this.player.body.setVelocityX(-350);
+    }
       if (this.cursors.right.isDown && !this.atMenu) {
           this.player.body.setVelocityX(350);
+      }
+      if (dKey.isDown && !this.atMenu) {
+        this.player.body.setVelocityX(350);
       }
       if (this.cursors.up.isDown && !this.atMenu) {
           this.player.body.setVelocityY(-350);
