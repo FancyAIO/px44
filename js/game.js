@@ -84,8 +84,8 @@ class gameScene extends Phaser.Scene {
   
   preload() {
     this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.image('eck', 'img/3.0 ECKERLE Sprite.PNG');
-      this.load.image('bushek', 'img/3.0 BUSHEK.PNG')
+      this.load.image('eck', 'img/eckerleSprite.PNG');
+      this.load.image('bushek', 'img/bushekSprite.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
           frameWidth: 120,
