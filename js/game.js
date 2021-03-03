@@ -84,7 +84,7 @@ class gameScene extends Phaser.Scene {
   
   preload() {
     this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.image('eck', 'img/Eckerle Sprite.PNG');
+      this.load.image('eck', 'img/3.0 ECKERLE Sprite.PNG');
       this.load.image('bushek', 'img/3.0 BUSHEK.PNG')
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
@@ -104,9 +104,9 @@ class gameScene extends Phaser.Scene {
      // scale down player
      this.player.setScale(0.5);
      // enemies
-      this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
-      this.bushek = this.physics.add.sprite(800, this.sys.game.config.height / 2, 'bushek',);
-      this.eck.setScale(2);
+      this.eck = this.physics.add.sprite(600, this.sys.game.config.height / 2, 'eck',);
+      this.bushek = this.physics.add.sprite(900, this.sys.game.config.height / 2, 'bushek',);
+      this.eck.setScale(1);
       this.bushek.setScale(1);
     
 
