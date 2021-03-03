@@ -83,7 +83,7 @@ class gameScene extends Phaser.Scene {
     
     preload() {
         this.load.image('background', 'img/bossbackground1.JPG');
-        this.load.image('boss', 'img/Eckerle Sprite.png');
+        this.load.image('boss', 'img/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/block.png');
         this.load.image('bean', 'img/bean bullet.png')
@@ -236,20 +236,22 @@ class gameScene extends Phaser.Scene {
     
     update() {
 
-        this.player.body.setVelocityX(0);
-        this.player.body.setVelocityY(0);
+        // this.player.body.setVelocityX(0);
+        // this.player.body.setVelocityY(0);
 
         if (aKey.isDown) {
             this.player.body.setVelocityX(-350);
         }
         if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(-350);
+            // this.player.body.setVelocityX(-350);
+            this.player.body.x -= 10
         }
         if (dKey.isDown) {
             this.player.body.setVelocityX(350);
           }
         if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(350);
+            // this.player.body.setVelocityX(350);
+            this.player.body.x += 10
         }
         if (this.cursors.space.isDown) {
             this.player.body.setVelocityY(-350); //temporary
@@ -308,7 +310,7 @@ class gameScene extends Phaser.Scene {
 }
     endJump() {
         this.timer.remove();
-        this.player.setVelocityY(-this.power * 100);
+        this.player.setVelocityY(-this.power * 10);
         this.power = 0;
 }
     tick() {
@@ -317,6 +319,11 @@ class gameScene extends Phaser.Scene {
             console.log(this.power);
         }
 }
+
+    gameOver() {
+        
+    }
+
 }
 
 // our game's configuration
