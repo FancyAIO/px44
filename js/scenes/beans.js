@@ -12,14 +12,14 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
         this.setActive(true);
         this.setVisible(true);
 
-        this.setVelocityY(-300);
+        this.setVelocityX(-300);
     }
 
     preUpdate (time, delta)
     {
         super.preUpdate(time, delta);
 
-        if (this.y <= -32)
+        if (this.x <= -256)
         {
             this.setActive(false);
             this.setVisible(false);
@@ -65,8 +65,8 @@ class Example extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('bullet', 'img/bean bullet.png');
-        this.load.image('ship', 'img/Eckerle Sprite.png');
+        this.load.image('bullet', 'img/bean_bullet_10.png');
+        this.load.image('ship', 'img/3.0 Eckerle Sprite.png');
     }
 
     create ()
@@ -86,20 +86,6 @@ class Example extends Phaser.Scene
             this.bullets.fireBullet(this.ship.x, this.ship.y);
 
         });
-
-        this.ship = this.add.group({
-            key: 'ship',
-            repeat: 0,
-            setXY: {
-                x: 100,
-                y: 815,
-                stepX: 80,
-                stepY: 20
-            }
-        });
-    
-        // scale eckman
-        Phaser.Actions.ScaleXY(this.ship.getChildren(), 2, 2);
     }
 }
 
