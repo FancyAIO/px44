@@ -239,14 +239,14 @@ class gameScene extends Phaser.Scene {
         // this.player.body.setVelocityX(0);
         // this.player.body.setVelocityY(0);
 
-        if (aKey.isDown) {
+        if (aKey.isDown && this.player.x > 15) {
             this.player.body.setVelocityX(-350);
         }
         if (this.cursors.left.isDown) {
             // this.player.body.setVelocityX(-350);
             this.player.body.x -= 10
         }
-        if (dKey.isDown) {
+        if (dKey.isDown && this.player.x < 590) {
             this.player.body.setVelocityX(350);
           }
         if (this.cursors.right.isDown) {
@@ -329,8 +329,8 @@ class gameScene extends Phaser.Scene {
 // our game's configuration
 let config = {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-    width: 1350, // game width
-    height: 750, // game height
+    width: 1800, // game width
+    height: 900, // game height
     scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {
