@@ -178,7 +178,6 @@ class gameScene extends Phaser.Scene {
   f9Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F9);
   f10Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F10);
   f11Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F11);
-  f12Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F12);
   forwardslashKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FORWARD_SLASH);
   minusKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.MINUS);
   periodKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PERIOD);
