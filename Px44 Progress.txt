@@ -37,3 +37,7 @@ Hello _____________,
 Thanks,
 ___________________
 
+Team Leader Progress Day 4:
+. The template was used to receive permission from the first four teachers. We are now allowed to use their likenesses in the game
+
+. A team Trello board was created in order to better keep track of what needs to be completed for the alpha build
