@@ -1,0 +1,16 @@
+Team leader Progress:
+
+Organized Team into several categories to Focus on:
+
+Dylan: team leader (organizing the team, planning, etc)
+
+Joe and jaime: Working on developing player movement and Boss mechanics
+
+Syed and Shri: Graphic Design (creating sprites and other images necessary for the game)
+
+Jeeth: Creating and designing the overworld, as well as connecting scenes
+
+Grant: General Javascript, specifically menues
+
+Nipper: Working on HTML doc and controls
+
