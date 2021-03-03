@@ -86,6 +86,7 @@ class gameScene extends Phaser.Scene {
         this.load.image('boss', 'img/Eckerle Sprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/block.png');
+        this.load.image('bean', 'img/bean bullet.png')
         this.load.spritesheet('player', 'img/garflief.JPG', {
 
             frameWidth: 120,
@@ -101,6 +102,8 @@ class gameScene extends Phaser.Scene {
 
         //});
     }
+
+
     create() {
 
        // background
