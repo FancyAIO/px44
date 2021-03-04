@@ -80,7 +80,7 @@ class eckerleScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/other/bossbackground1.JPG');
+      this.load.image('background', 'img/eckerle/Eck background.JPG');
       this.load.image('eck', 'img/eckerle/Eckerle Sprite.PNG');
       //this.load.image('bushek', 'img/Bushek Sprite.PNG')
       this.load.spritesheet('player', 'img/other/garflief.JPG', {
