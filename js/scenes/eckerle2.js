@@ -86,7 +86,7 @@ class gameScene extends Phaser.Scene {
         this.load.image('background', 'img/other/bossbackground1.JPG');
         this.load.image('boss', 'img/eckerle/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/projectiles/block.png');
+        this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean bullet.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
