@@ -83,7 +83,7 @@ class gameScene extends Phaser.Scene {
   }
   
   preload() {
-    this.load.image('background', 'img/Overworld/overworldBackground.JPG');
+    this.load.image('background', 'img/Overworld/overworldBackground.PNG');
       this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
 
