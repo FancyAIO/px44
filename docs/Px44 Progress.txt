@@ -21,7 +21,7 @@ Jeeth: Creating and designing the overworld, as well as connecting scenes
 
 Grant: General Javascript, specifically menues
 
-Nipper: Working on HTML doc and controls
+Nipper: Working on HTML doc and controls, as well as general javascript
 
 Team Leader Progress Day 2:
 
