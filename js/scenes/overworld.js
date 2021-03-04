@@ -67,7 +67,7 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class gameScene extends Phaser.Scene {
+class overworldScene extends Phaser.Scene {
   constructor() {
       super({
           key: 'gameScene',
@@ -194,10 +194,10 @@ class gameScene extends Phaser.Scene {
         this.player.body.setVelocityX(350);
       }
       if (wKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityY(350);
+        this.player.body.setVelocityY(-350);
       }
       if (sKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityY(-350);
+        this.player.body.setVelocityY(350);
       }
       if (this.cursors.up.isDown && !this.atMenu) {
           this.player.body.setVelocityY(-350);
@@ -280,7 +280,7 @@ let config = {
   type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
   width: 1350, // game width
   height: 750, // game height
-  scene: gameScene, // our newly created scene
+  scene: overworldScene, // our newly created scene
   parent: 'main-game',
   physics: {
       default: 'arcade',
