@@ -80,10 +80,10 @@ class bushekScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/bossbackground1.JPG');
-      this.load.image('eck', 'img/Eckerle Sprite.PNG');
-      this.load.image('bushek', 'img/Bushek Sprite.PNG')
-      this.load.spritesheet('player', 'img/garflief.JPG', {
+      this.load.image('background', 'img/bushek/Bushek background.JPG');
+      //this.load.image('eck', 'img/eckerle/Eckerle Sprite.PNG');
+      this.load.image('bushek', 'img/bushek/Bushek Sprite.PNG')
+      this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
           frameWidth: 120,
 

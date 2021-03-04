@@ -79,15 +79,16 @@ class gameScene extends Phaser.Scene {
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
         this.enemyMinY = 20;
+        this.timer;
     }
     
     preload() {
-        this.load.image('background', 'img/bossbackground1.JPG');
-        this.load.image('boss', 'img/Eckerle Sprite.png');
+        this.load.image('background', 'img/other/bossbackground1.JPG');
+        this.load.image('boss', 'img/eckerle/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/block.png');
-        this.load.image('bean', 'img/bean bullet.png')
-        this.load.spritesheet('player', 'img/garflief.JPG', {
+        this.load.image('block', 'img/other/block.png');
+        this.load.image('bean', 'img/projectiles/bean bullet.png')
+        this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
             frameWidth: 120,
 
@@ -129,8 +130,8 @@ class gameScene extends Phaser.Scene {
          ground.setImmovable();
          //add the colliders
          this.physics.add.collider(player, ground);
-         this.input.on('pointerdown', this.startJump, this);
-         this.input.on('pointerup', this.endJump, this);
+        //  this.input.on('pointerdown', this.startJump, this);
+        //  this.input.on('pointerup', this.endJump, this);
 
        // scale down
        this.player.setScale(0.4);
@@ -236,23 +237,34 @@ class gameScene extends Phaser.Scene {
     
     update() {
 
-        this.player.body.setVelocityX(0);
-        this.player.body.setVelocityY(0);
+        // this.player.body.setVelocityX(0);
+        // this.player.body.setVelocityY(0);
 
         if (aKey.isDown && this.player.x > 15) {
             this.player.body.setVelocityX(-350);
         }
         if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(-350);
+            // this.player.body.setVelocityX(-350);
+            this.player.body.x -= 10
         }
         if (dKey.isDown && this.player.x < 590) {
             this.player.body.setVelocityX(350);
           }
         if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(350);
+            // this.player.body.setVelocityX(350);
+            this.player.body.x += 10
         }
         if (this.cursors.space.isDown) {
-            this.player.body.setVelocityY(-350); //temporary
+            // this.player.body.setVelocityY(-350); //temporary
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+            this.startJump();
+            console.log("jump");
+        }
+
+        if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
+            this.endJump();
         }
         //if (this.cursors.up.isDown) {
             //this.player.body.setVelocityY(-350);
@@ -308,7 +320,7 @@ class gameScene extends Phaser.Scene {
 }
     endJump() {
         this.timer.remove();
-        this.player.setVelocityY(-this.power * 100);
+        this.player.setVelocityY(-this.power * 10);
         this.power = 0;
 }
     tick() {
@@ -317,6 +329,11 @@ class gameScene extends Phaser.Scene {
             console.log(this.power);
         }
 }
+
+    gameOver() {
+        
+    }
+
 }
 
 // our game's configuration
