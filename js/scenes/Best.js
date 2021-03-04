@@ -80,9 +80,9 @@ class petcaughScene extends Phaser.Scene {
     }
     
     preload() {
-      this.load.image('background', 'img/petcaugh/petclaw background.JPG');
+      this.load.image('background', 'img/best/Bestbackground.JPG');
       //this.load.image('eck', 'img/eckerle/Eckerle Sprite.PNG');
-      this.load.image('bushek', 'img/petcaugh/petcaughSprite.PNG')
+      this.load.image('bushek', 'img/best/bestSprite.PNG')
       this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
           frameWidth: 120,
