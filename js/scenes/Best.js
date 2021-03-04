@@ -67,100 +67,51 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class gameScene extends Phaser.Scene {
+class petcaughScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'petcaughScene',
             active: true
         });
-    
         this.cursor = new Phaser.Math.Vector2();
-    
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
         this.enemyMinY = 20;
-        this.timer;
     }
     
     preload() {
-        this.load.image('background', 'img/other/bossbackground1.JPG');
-        this.load.image('boss', 'img/eckerle/eckerleSprite.png');
-        //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/other/block.png');
-        this.load.image('bean', 'img/projectiles/bean bullet.png')
-        this.load.spritesheet('player', 'img/other/garflief.JPG', {
+      this.load.image('background', 'img/best/Bestbackground.JPG');
+      //this.load.image('eck', 'img/eckerle/Eckerle Sprite.PNG');
+      this.load.image('bushek', 'img/best/bestSprite.PNG')
+      this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
-            frameWidth: 120,
+          frameWidth: 120,
 
-            frameHeight: 190,
+          frameHeight: 190,
 
-        });
-        //this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
-
-            //frameWidth: 32,
-
-            //frameHeight: 32
-
-        //});
-    }
-
-
+      });
+  }
+  
     create() {
-
        // background
        let bg = this.add.sprite(0, 0, 'background');
-
-       // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
-
-       this.power=0;
-
-         //define our objects
-         let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
-         this.player = player
-         //set the gravity
-         player.setGravityY(9999);
-         //place the ground
-         let groundX = this.sys.game.config.width / 2;
-         let groundY = this.sys.game.config.height * .99;
-         let ground = this.physics.add.sprite(groundX, groundY, "block");
-         //size the ground
-         ground.displayWidth = this.sys.game.config.width * 1.1;
-         //make the ground stay in place
-         ground.setImmovable();
-         //add the colliders
-         this.physics.add.collider(player, ground);
-        //  this.input.on('pointerdown', this.startJump, this);
-        //  this.input.on('pointerup', this.endJump, this);
-
-       // scale down
-       this.player.setScale(0.4);
-       
-        this.enemies = this.add.group({
-            key: 'boss',
-            repeat: 0,
-            setXY: {
-                x: 100,
-                y: 815,
-                stepX: 80,
-                stepY: 20
-            }
-        });
+    // player
+     this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
+     // scale down player
+     this.player.setScale(0.5);
+     // enemies
+      this.eck = this.physics.add.sprite(200, this.sys.game.config.height / 2, 'eck',);
+      this.bushek = this.physics.add.sprite(400, this.sys.game.config.height / 2, 'bushek',);
+      this.eck.setScale(2);
+      this.bushek.setScale(2);
     
-        // scale enemies
-        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 2, 2);
-    
-       // set speeds
-       Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-        enemy.speed = Math.random() * 2 + 1;
-    }, this);
 
     // player is alive
     this.isPlayerAlive = true;
-
     // reset camera effects
     this.cameras.main.resetFX();
-
+    // sets up keyboard binds
     this.cursors = this.input.keyboard.createCursorKeys();
     spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     oneKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
@@ -223,6 +174,7 @@ class gameScene extends Phaser.Scene {
     f9Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F9);
     f10Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F10);
     f11Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F11);
+    f12Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F12);
     forwardslashKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FORWARD_SLASH);
     minusKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.MINUS);
     periodKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PERIOD);
@@ -230,117 +182,60 @@ class gameScene extends Phaser.Scene {
     quotesKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.QUOTES);
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
+    // setting world bounds function
     this.player.setCollideWorldBounds(true);
-    //this.player.setBounce(1, 1);
     }
-    
+
     update() {
-
-        // this.player.body.setVelocityX(0);
-        // this.player.body.setVelocityY(0);
-
-        if (aKey.isDown && this.player.x > 15) {
-            this.player.body.setVelocityX(-350);
-        }
-        if (this.cursors.left.isDown) {
-            // this.player.body.setVelocityX(-350);
-            this.player.body.x -= 10
-        }
-        if (dKey.isDown && this.player.x < 590) {
-            this.player.body.setVelocityX(350);
-          }
-        if (this.cursors.right.isDown) {
-            // this.player.body.setVelocityX(350);
-            this.player.body.x += 10
-        }
-        if (this.cursors.space.isDown) {
-            // this.player.body.setVelocityY(-350); //temporary
-        }
-
-        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
-            this.startJump();
-            console.log("jump");
-        }
-
-        if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
-            this.endJump();
-        }
-        //if (this.cursors.up.isDown) {
-            //this.player.body.setVelocityY(-350);
-        //}
-        //if (this.cursors.down.isDown) {
-            //this.player.body.setVelocityY(350);
-        //}
-
-        // only if the player is alive
-        if (!this.isPlayerAlive) {
-            return;
-        }
-
-        // check for active input
-        // if (this.input.activePointer.isDown) {
-
-        //     // player walks
-        //     this.player.x += this.playerSpeed;
-        // }
-
-        // enemy movement
-        let enemies = this.enemies.getChildren();
-        let numEnemies = enemies.length;
-
-        for (let i = 0; i < numEnemies; i++) {
-
-            // move enemies
-            enemies[i].x += enemies[i].speed;
-
-            // reverse movement if reached the edges
-            if (enemies[i].x >= this.enemyMaxY && enemies[i].speed > 0) {
-                enemies[i].speed *= -1;
-            } else if (enemies[i].x <= this.enemyMinY && enemies[i].speed < 0) {
-                enemies[i].speed *= -1;
-            }
-
-            // enemy collision
-            if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
-                this.gameOver();
-                break;
-            }
-        }
-    
+    // setting velocity variables
+      this.player.body.setVelocityX(0);
+      this.player.body.setVelocityY(0);
+    // keybinds' actions
+      if (this.cursors.left.isDown) {
+          this.player.body.setVelocityX(-350);
+      }
+      if (this.cursors.right.isDown) {
+          this.player.body.setVelocityX(350);
+      }
+      if (this.cursors.up.isDown) {
+          this.player.body.setVelocityY(-350);
+      }
+      if (this.cursors.down.isDown) {
+          this.player.body.setVelocityY(350);
+      }
+      // only if the player is alive
+      if (!this.isPlayerAlive) {
+          return;
+      }
+      // check for active input
+      if (this.input.activePointer.isDown) {
+          // player walks
+          this.player.x += this.playerSpeed;
+      }
+      //eck collision
+      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
+        this.gameOver();
+        this.scene.start("coophestonScene");
+      }
+     //bushek collision
+     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
+        this.gameOver();
+        this.scene.start("petcaughScene");
+      }
 }
-    startJump() {
-        this.timer = this.time.addEvent({
-            delay: 100,
-            callback: this.tick,
-            callbackScope: this,
-            loop: true
-        });
-    // this.player.setVelocityY(-100);
-}
-    endJump() {
-        this.timer.remove();
-        this.player.setVelocityY(-this.power * 10);
-        this.power = 0;
-}
-    tick() {
-        if (this.power < 50000) {
-            this.power += 100;
-            console.log(this.power);
-        }
-}
-
+  
     gameOver() {
-        
+      this.player.x = 40;
+      this.player.y = this.sys.game.config.height / 2;
     }
-
-}
-
-// our game's configuration
-let config = {
+  }
+  
+  // our game's configuration
+  let config = {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
     width: 1350, // game width
     height: 750, // game height
-    scene: gameScene, // our newly created scene
+    scene: petcaughScene, // our newly created scene
     parent: 'main-game',
     physics: {
         default: 'arcade',
@@ -352,3 +247,4 @@ let config = {
     
     // create the game, and pass it the configuration
     let game = new Phaser.Game(config);
+  
