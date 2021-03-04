@@ -186,17 +186,18 @@ class gameScene extends Phaser.Scene {
       this.player.body.setVelocityX(0);
       this.player.body.setVelocityY(0);
     // keybinds' actions
-      if (this.cursors.left.isDown && !this.atMenu) {
-          this.player.body.setVelocityX(-350);
-      }
+      
       if (aKey.isDown && !this.atMenu) {
         this.player.body.setVelocityX(-350);
     }
-      if (this.cursors.right.isDown && !this.atMenu) {
-          this.player.body.setVelocityX(350);
-      }
       if (dKey.isDown && !this.atMenu) {
         this.player.body.setVelocityX(350);
+      }
+      if (wKey.isDown && !this.atMenu) {
+        this.player.body.setVelocityY(350);
+      }
+      if (sKey.isDown && !this.atMenu) {
+        this.player.body.setVelocityY(-350);
       }
       if (this.cursors.up.isDown && !this.atMenu) {
           this.player.body.setVelocityY(-350);
@@ -204,15 +205,17 @@ class gameScene extends Phaser.Scene {
       if (this.cursors.down.isDown && !this.atMenu) {
           this.player.body.setVelocityY(350);
       }
+      if (this.cursors.right.isDown && !this.atMenu) {
+        this.player.body.setVelocityX(350);
+      }
+      if (this.cursors.left.isDown && !this.atMenu) {
+        this.player.body.setVelocityX(-350);
+      }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
       }
-      // check for active input
-      if (this.input.activePointer.isDown) {
-          // player walks
-          this.player.x += this.playerSpeed;
-      }
+
 
       let rect;
       let text;
