@@ -1,0 +1,52 @@
+Daily Team Leader Tasks:
+
+1. check on status of all game components
+2. set daily goals for team
+3. ensure team is on track to finish by the due date
+4. answer any questions team may have
+5. make sure everyone is on task
+6. set at-home goals at the end of class each day
+
+Team leader Progress Day 1:
+
+Organized Team into several categories to Focus on:
+
+Dylan: team leader (organizing the team, planning, etc)
+
+Joe and jaime: Working on developing player movement and Boss mechanics
+
+Syed and Shri: Graphic Design (creating sprites and other images necessary for the game)
+
+Jeeth: Creating and designing the overworld, as well as connecting scenes
+
+Grant: General Javascript, specifically menues
+
+Nipper: Working on HTML doc and controls, as well as general javascript
+
+Team Leader Progress Day 2:
+
+Decided our goals for the alpha build:
+. we will start with 4 bosses, one of each grade level
+	. Mr. Petcaugh
+	. Mr. Bushek
+	. Mrs. Best
+	. Mr. Eckerle 
+. We will have a basic overworld
+. we will refine the player and boss movement
+. there will be a very simple "start" menu
+. players will be able to shoot projectiles at bosses
+. bosses and players will have functioning health bars
+
+Team Leader Progress Day 3:
+created template to request permission to use teacher likenesses (contained below)
+
+Hello _____________,
+	
+	I am writing to you in order to request permission to use your likeness for the current project being worked on in the Computer Science Advanced Topics Honors class. I and seven other students have been tasked with creating a video game to share with the school, and we are planning to include all of HGP’s teachers as characters in the game. The player will have to “defeat” all the teachers in order to win the game. It is all in good taste, but we just wanted to request permission from all the teachers to avoid any issues. If you have any questions or would like something specific included as a part of your character in the game, feel free to reach out. Please let me know if this is okay with you.
+Thanks,
+___________________
+
+Team Leader Progress Day 4:
+. The template was used to receive permission from the first four teachers. We are now allowed to use their likenesses in the game
+
+. A team Trello board was created in order to better keep track of what needs to be completed for the alpha build

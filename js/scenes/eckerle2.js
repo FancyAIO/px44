@@ -79,15 +79,16 @@ class gameScene extends Phaser.Scene {
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
         this.enemyMinY = 20;
+        this.timer;
     }
     
     preload() {
-        this.load.image('background', 'img/bossbackground1.JPG');
-        this.load.image('boss', 'img/eckerleSprite.png');
+        this.load.image('background', 'img/other/bossbackground1.JPG');
+        this.load.image('boss', 'img/eckerle/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/block.png');
-        this.load.image('bean', 'img/bean bullet.png')
-        this.load.spritesheet('player', 'img/garflief.JPG', {
+        this.load.image('block', 'img/projectiles/block.png');
+        this.load.image('bean', 'img/projectiles/bean bullet.png')
+        this.load.spritesheet('player', 'img/other/garflief.JPG', {
 
             frameWidth: 120,
 
@@ -129,8 +130,8 @@ class gameScene extends Phaser.Scene {
          ground.setImmovable();
          //add the colliders
          this.physics.add.collider(player, ground);
-         this.input.on('pointerdown', this.startJump, this);
-         this.input.on('pointerup', this.endJump, this);
+        //  this.input.on('pointerdown', this.startJump, this);
+        //  this.input.on('pointerup', this.endJump, this);
 
        // scale down
        this.player.setScale(0.4);
@@ -254,7 +255,16 @@ class gameScene extends Phaser.Scene {
             this.player.body.x += 10
         }
         if (this.cursors.space.isDown) {
-            this.player.body.setVelocityY(-350); //temporary
+            // this.player.body.setVelocityY(-350); //temporary
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+            this.startJump();
+            console.log("jump");
+        }
+
+        if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
+            this.endJump();
         }
         //if (this.cursors.up.isDown) {
             //this.player.body.setVelocityY(-350);
@@ -329,8 +339,8 @@ class gameScene extends Phaser.Scene {
 // our game's configuration
 let config = {
     type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-    width: 1350, // game width
-    height: 750, // game height
+    width: 1800, // game width
+    height: 900, // game height
     scene: gameScene, // our newly created scene
     parent: 'main-game',
     physics: {

@@ -86,6 +86,7 @@ class gameScene extends Phaser.Scene {
     this.load.image('background', 'img/overworldBackground.PNG');
       this.load.spritesheet('player', 'img/garflief.JPG', {
 
+
           frameWidth: 120,
 
           frameHeight: 190,
