@@ -83,10 +83,9 @@ class gameScene extends Phaser.Scene {
   }
   
   preload() {
-    this.load.image('background', 'img/other/bossbackground1.JPG');
-      this.load.image('eck', 'img/eckerle/eckerleSprite.PNG');
-      this.load.image('bushek', 'img/bushek/bushekSprite.PNG')
-      this.load.spritesheet('player', 'img/other/garflief.JPG', {
+    this.load.image('background', 'img/overworldBackground.PNG');
+      this.load.spritesheet('player', 'img/garflief.JPG', {
+
 
           frameWidth: 120,
 
@@ -103,14 +102,7 @@ class gameScene extends Phaser.Scene {
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
      this.player.setScale(0.5);
-     // enemies
-      this.eck = this.physics.add.sprite(600, this.sys.game.config.height / 2, 'eck',);
-      this.bushek = this.physics.add.sprite(900, this.sys.game.config.height / 2, 'bushek',);
-      this.eck.setScale(1);
-      this.bushek.setScale(1);
-    
-
-      
+           
   // player is alive
   this.isPlayerAlive = true;
   // reset camera effects
@@ -220,16 +212,6 @@ class gameScene extends Phaser.Scene {
       if (this.input.activePointer.isDown) {
           // player walks
           this.player.x += this.playerSpeed;
-      }
-      //eck collision
-      if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
-        this.gameOver();
-        //this.scene.start("coophestonScene");
-      }
-     //bushek collision
-     if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.bushek.getBounds())) {
-        this.gameOver();
-       // this.scene.start('petcaughScene');
       }
 
       let rect;
