@@ -1,44 +1,15 @@
-class Bullet extends Phaser.Physics.Arcade.Sprite
-{
-    constructor (scene, x, y)
-    {
-        super(scene, x, y, 'bullet');
-    }
-
-    fire (x, y)
-    {
-        this.body.reset(x, y);
-
-        this.setActive(true);
-        this.setVisible(true);
-
-        this.setVelocityX(-300);
-    }
-
-    preUpdate (time, delta)
-    {
-        super.preUpdate(time, delta);
-
-        if (this.x <= -256)
-        {
-            this.setActive(false);
-            this.setVisible(false);
-        }
-    }
-}
-
 class Bullets extends Phaser.Physics.Arcade.Group
 {
     constructor (scene)
     {
-        super(scene.physics.world, scene);
+        super(scene.physics.world);
 
         this.createMultiple({
             frameQuantity: 5,
-            key: 'bullet',
+            key: 'Bullets',
             active: false,
             visible: false,
-            classType: Bullet
+            classType: Bullets
         });
 
 
@@ -46,16 +17,16 @@ class Bullets extends Phaser.Physics.Arcade.Group
 
     fireBullet (x, y)
     {
-        let bullet = this.getFirstDead(false);
+        let bullets = this.getFirstDead(false);
 
-        if (bullet)
+        if (bullets)
         {
-            bullet.fire(x, y);
+            bullets.fire(x, y);
         }
     }
 }
 
-class Example extends Phaser.Scene
+class beanScene extends Phaser.Scene
 {
     constructor ()
     {
@@ -85,7 +56,7 @@ class Example extends Phaser.Scene
         
     }
     update(){
-        var timer = scene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
+        var timer = beanScene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
 
         this.input.on('pointerdown', (pointer) => {
 
@@ -101,6 +72,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+    scene: beanScene,
     parent: 'phaser-example',
     physics: {
         default: 'arcade',
@@ -108,8 +80,8 @@ const config = {
             debug: false,
             gravity: { y: 0 }
         }
-    },
-    scene: Example
+    }
+    
 };
 
 let game = new Phaser.Game(config);
