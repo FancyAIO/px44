@@ -119,7 +119,8 @@ class gameScene extends Phaser.Scene {
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
          this.player = player
          //set the gravity
-         player.setGravityY(9999);
+         player.setGravityY(5000);
+         player.setOrigin(100, 100);
          //place the ground
          let groundX = this.sys.game.config.width / 2;
          let groundY = this.sys.game.config.height * .99;
