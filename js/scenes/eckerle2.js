@@ -259,7 +259,7 @@ class gameScene extends Phaser.Scene {
             // this.player.body.setVelocityY(-350); //temporary
         }
 
-        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
             this.startJump();
             console.log("jump");
         }
@@ -336,6 +336,7 @@ class gameScene extends Phaser.Scene {
     gameOver() {
         
     }
+
 
 }
 
