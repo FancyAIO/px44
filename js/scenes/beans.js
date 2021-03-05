@@ -67,7 +67,7 @@ class Example extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('bullet', 'img/bean.png');
+        this.load.image('bullet', 'img/projectiles/bean.png');
         this.load.image('ship', 'img/eckerle/eckerleSprite.png');
     }
 
@@ -82,14 +82,17 @@ class Example extends Phaser.Scene
             this.ship.x = pointer.x;
 
         });
-        //var timer = scene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
-/*
+        
+    }
+    update(){
+        var timer = scene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
+
         this.input.on('pointerdown', (pointer) => {
 
             this.bullets.fireBullet(this.ship.x, this.ship.y);
 
         });
-*/
+
     }
 
 }
