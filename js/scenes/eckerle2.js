@@ -119,7 +119,8 @@ class gameScene extends Phaser.Scene {
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
          this.player = player
          //set the gravity
-         player.setGravityY(9999);
+         player.setGravityY(5000);
+         player.setOrigin(100, 100);
          //place the ground
          let groundX = this.sys.game.config.width / 2;
          let groundY = this.sys.game.config.height * .99;
@@ -240,14 +241,15 @@ class gameScene extends Phaser.Scene {
         // this.player.body.setVelocityY(0);
 
         if (aKey.isDown && this.player.x > 15) {
-            this.player.body.setVelocityX(-350);
+            this.player.x -= 10;
         }
         if (this.cursors.left.isDown) {
             // this.player.body.setVelocityX(-350);
-            this.player.body.x -= 10
+            this.player.body.x -= 10;
         }
-        if (dKey.isDown && this.player.x < 590) {
-            this.player.body.setVelocityX(350);
+        if (dKey.isDown) {
+            console.log("test")
+            this.player.x += 10;
           }
         if (this.cursors.right.isDown) {
             // this.player.body.setVelocityX(350);
@@ -257,7 +259,7 @@ class gameScene extends Phaser.Scene {
             // this.player.body.setVelocityY(-350); //temporary
         }
 
-        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
             this.startJump();
             console.log("jump");
         }
@@ -306,6 +308,8 @@ class gameScene extends Phaser.Scene {
                 break;
             }
         }
+
+
     
 }
     startJump() {
@@ -332,6 +336,7 @@ class gameScene extends Phaser.Scene {
     gameOver() {
         
     }
+
 
 }
 
