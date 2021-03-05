@@ -247,7 +247,8 @@ class gameScene extends Phaser.Scene {
             // this.player.body.setVelocityX(-350);
             this.player.body.x -= 10;
         }
-        if (dKey.isDown && this.player.x < 590) {
+        if (dKey.isDown) {
+            console.log("test")
             this.player.x += 10;
           }
         if (this.cursors.right.isDown) {
