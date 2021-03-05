@@ -236,27 +236,17 @@ class gameScene extends Phaser.Scene {
     }
     
     update() {
-
-        // this.player.body.setVelocityX(0);
-        // this.player.body.setVelocityY(0);
-
-        if (aKey.isDown && this.player.x > 15) {
+        if (aKey.isDown) {
             this.player.x -= 10;
         }
         if (this.cursors.left.isDown) {
-            // this.player.body.setVelocityX(-350);
             this.player.body.x -= 10;
         }
         if (dKey.isDown) {
-            console.log("test")
             this.player.x += 10;
           }
         if (this.cursors.right.isDown) {
-            // this.player.body.setVelocityX(350);
             this.player.body.x += 10
-        }
-        if (this.cursors.space.isDown) {
-            // this.player.body.setVelocityY(-350); //temporary
         }
 
         if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
@@ -267,24 +257,11 @@ class gameScene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
             this.endJump();
         }
-        //if (this.cursors.up.isDown) {
-            //this.player.body.setVelocityY(-350);
-        //}
-        //if (this.cursors.down.isDown) {
-            //this.player.body.setVelocityY(350);
-        //}
 
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;
         }
-
-        // check for active input
-        // if (this.input.activePointer.isDown) {
-
-        //     // player walks
-        //     this.player.x += this.playerSpeed;
-        // }
 
         // enemy movement
         let enemies = this.enemies.getChildren();
