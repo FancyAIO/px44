@@ -67,7 +67,7 @@ class Example extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('bullet', 'img/bean.png');
+        this.load.image('bullet', 'img/projectiles/bean.png');
         this.load.image('ship', 'img/eckerle/eckerleSprite.png');
     }
 
