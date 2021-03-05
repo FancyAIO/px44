@@ -77,6 +77,8 @@ class petcaughScene extends Phaser.Scene {
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
         this.enemyMinY = 20;
+        this.playerHealth = 100;
+        this.healthBarX = 225;
     }
     
     preload() {
@@ -247,4 +249,12 @@ class petcaughScene extends Phaser.Scene {
     
     // create the game, and pass it the configuration
     let game = new Phaser.Game(config);
+
+    function healthBar(scene) {
+      if (xKey.isDown && scene.playerHealth >= 0) {
+          scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
+          scene.playerHealth -= 0.5;
+          scene.healthBarX -= 1;
+      }
+  }
   
