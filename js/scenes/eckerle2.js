@@ -240,14 +240,14 @@ class gameScene extends Phaser.Scene {
         // this.player.body.setVelocityY(0);
 
         if (aKey.isDown && this.player.x > 15) {
-            this.player.body.setVelocityX(-350);
+            this.player.x -= 10;
         }
         if (this.cursors.left.isDown) {
             // this.player.body.setVelocityX(-350);
-            this.player.body.x -= 10
+            this.player.body.x -= 10;
         }
         if (dKey.isDown && this.player.x < 590) {
-            this.player.body.setVelocityX(350);
+            this.player.x += 10;
           }
         if (this.cursors.right.isDown) {
             // this.player.body.setVelocityX(350);
@@ -306,6 +306,8 @@ class gameScene extends Phaser.Scene {
                 break;
             }
         }
+
+
     
 }
     startJump() {
