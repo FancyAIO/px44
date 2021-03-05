@@ -187,31 +187,30 @@ class petcaughScene extends Phaser.Scene {
     }
 
     update() {
-    // setting velocity variables
-      this.player.body.setVelocityX(0);
-      this.player.body.setVelocityY(0);
-    // keybinds' actions
-      if (this.cursors.left.isDown) {
-          this.player.body.setVelocityX(-350);
+      if (aKey.isDown) {
+        this.player.x -= 10;
+    }
+    if (this.cursors.left.isDown) {
+        this.player.body.x -= 10;
+    }
+    if (dKey.isDown) {
+        this.player.x += 10;
       }
-      if (this.cursors.right.isDown) {
-          this.player.body.setVelocityX(350);
-      }
-      if (this.cursors.up.isDown) {
-          this.player.body.setVelocityY(-350);
-      }
-      if (this.cursors.down.isDown) {
-          this.player.body.setVelocityY(350);
-      }
-      // only if the player is alive
-      if (!this.isPlayerAlive) {
-          return;
-      }
-      // check for active input
-      if (this.input.activePointer.isDown) {
-          // player walks
-          this.player.x += this.playerSpeed;
-      }
+    if (this.cursors.right.isDown) {
+        this.player.body.x += 10
+    }
+
+    if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
+        this.startJump();
+        console.log("jump");
+    }
+
+    if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
+        this.endJump();
+    }
+    if (!this.isPlayerAlive) {
+      return;
+  }
       //eck collision
       if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
         this.gameOver();
