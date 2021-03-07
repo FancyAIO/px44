@@ -283,6 +283,7 @@ class gameScene extends Phaser.Scene {
 
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
+                healthBar(this);
                 this.gameOver();
                 break;
             }
@@ -293,7 +294,7 @@ class gameScene extends Phaser.Scene {
 
         }
 
-        healthBar(this);
+
 
     
 }
@@ -344,7 +345,7 @@ let config = {
     let game = new Phaser.Game(config);
 
 function healthBar(scene) {
-    if (xKey.isDown && scene.playerHealth >= 0) {
+    if (scene.playerHealth >= 0) {
         scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
         scene.playerHealth -= 0.5;
         scene.healthBarX -= 1;
