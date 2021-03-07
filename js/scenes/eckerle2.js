@@ -143,16 +143,15 @@ class gameScene extends Phaser.Scene {
             key: 'boss',
             repeat: 0,
             setXY: {
-                x: 100,
-                y: 815,
+                x: 500,
+                y: 600,
                 stepX: 80,
                 stepY: 20
             }
         });
     
         // scale enemies
-        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 2, 2);
-    
+        Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.5, 0.5);
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
         enemy.speed = Math.random() * 2 + 1;
