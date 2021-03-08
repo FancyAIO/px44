@@ -71,6 +71,8 @@ class beanScene extends Phaser.Scene
 
     create ()
     {
+        this.power = 0
+        
         this.bullets = new Bullets(this);
 
         this.ship = this.add.image(400, 500, 'ship');
@@ -80,14 +82,20 @@ class beanScene extends Phaser.Scene
             this.ship.x = pointer.x;
 
         });
+            this.timer = this.time.addEvent({
+                delay: 50,
+                callback: this.bullets.fireBullet(this.ship.x, this.ship.y),
+                callbackScope: this,
+                loop: true
+            });
 
-        this.input.on('pointerdown', (pointer) => {
+        // this.input.on('pointerdown', (pointer) => {
 
-            this.bullets.fireBullet(this.ship.x, this.ship.y);
+        //     this.bullets.fireBullet(this.ship.x, this.ship.y);
 
-        });
+        };
     }
-}
+
 
 const config = {
     type: Phaser.AUTO,
