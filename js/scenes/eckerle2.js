@@ -82,14 +82,16 @@ class gameScene extends Phaser.Scene {
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
+        this.bean;
+        this.boss;
     }
     
     preload() {
         this.load.image('background', 'img/other/bossbackground1.JPG');
-        this.load.image('boss', 'img/eckerle/eckerleSprite.png');
+        this.boss = this.load.image('boss', 'img/eckerle/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
-        this.load.image('bean', 'img/projectiles/bean bullet.png')
+        this.load.image('bean', 'img/projectiles/bean.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
             frameWidth: 120,
             frameHeight: 190,
@@ -216,8 +218,22 @@ class gameScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    }
+        this.power = 0
+        
+        this.bean = new bean(this);
+
+        // });
+            this.timer = this.time.addEvent({
+                delay: 50,
+                callback: this.bean.fireBullet(this.boss.x, this.boss.y),
+                callbackScope: this,
+                repeat: 5
+            });
+
+
+
     
+    }
     update() {
         if (aKey.isDown) {
             this.player.x -= 10;
@@ -290,6 +306,66 @@ class gameScene extends Phaser.Scene {
     gameOver() {       
     }
 }
+class Bullet extends Phaser.Physics.Arcade.Sprite
+{
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'bullet');
+    }
+
+    fire (x, y)
+    {
+        this.body.reset(x, y);
+
+        this.setActive(true);
+        this.setVisible(true);
+
+        this.setVelocityX(-300);
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        if (this.x <= -32)
+        {
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
+}
+
+class bean extends Phaser.Physics.Arcade.Group
+{
+    constructor (scene)
+    {
+        super(scene.physics.world, scene);
+
+        this.createMultiple({
+            frameQuantity: 5,
+            key: 'bullet',
+            active: false,
+            visible: false,
+            classType: Bullet
+        });
+    }
+
+    fireBullet (x, y)
+    {
+        let bullet = this.getFirstDead(false);
+
+        if (bullet)
+        {
+            bullet.fire(x, y);
+        }
+    }
+}
+
+
+
+
+
+
 
 // our game's configuration
 let config = {
