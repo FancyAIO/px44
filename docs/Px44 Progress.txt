@@ -86,3 +86,27 @@ Progress Day 8:
 . boss movement finished
 
 . projectile code started by Jaime and Joe
+
+Progress Day 9: 
+
+. health bars finished
+
+. debugging projectile code
+
+. Jeeth created overworld
+
+Progress Day 10:
+
+. Debugging projectiles
+
+. Set goals for final weekend of alpha phase
+
+Day 11:
+
+. set time to meet and finish alpha phase (9:00 PM 2/7/2021)
+
+Day 12: 
+
+. Met on discord to finish alpha phase
+
+. fixed projectile code
