@@ -71,3 +71,18 @@ Progress Day 6:
 . Main menu almost completed
 
 . set goals for the weekend
+
+Progress Day 7:
+.Main menus finished
+
+.img files organized
+
+. player movement finished
+
+Progress Day 8:
+
+. Grant started health bars
+
+. boss movement finished
+
+. projectile code started by Jaime and Joe
