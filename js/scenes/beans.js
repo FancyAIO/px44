@@ -1,8 +1,37 @@
+class Bullet extends Phaser.Physics.Arcade.Sprite
+{
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'bullet');
+    }
+
+    fire (x, y)
+    {
+        this.body.reset(x, y);
+
+        this.setActive(true);
+        this.setVisible(true);
+
+        this.setVelocityY(-300);
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        if (this.y <= -32)
+        {
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
+}
+
 class Bullets extends Phaser.Physics.Arcade.Group
 {
     constructor (scene)
     {
-        super(scene.physics.world);
+        super(scene.Physics.world);
 
         this.createMultiple({
             frameQuantity: 5,
@@ -56,7 +85,7 @@ class beanScene extends Phaser.Scene
         
     }
     update(){
-        var timer = beanScene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
+        // var timer = beanScene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
 
         this.input.on('pointerdown', (pointer) => {
 
