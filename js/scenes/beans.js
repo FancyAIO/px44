@@ -61,6 +61,7 @@ class beanScene extends Phaser.Scene
 
         this.bullets;
         this.ship;
+        this.timer;
     }
 
     preload ()
