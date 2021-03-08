@@ -31,26 +31,24 @@ class Bullets extends Phaser.Physics.Arcade.Group
 {
     constructor (scene)
     {
-        super(scene.Physics.world);
+        super(scene.physics.world, scene);
 
         this.createMultiple({
             frameQuantity: 5,
-            key: 'Bullets',
+            key: 'bullet',
             active: false,
             visible: false,
-            classType: Bullets
+            classType: Bullet
         });
-
-
     }
 
     fireBullet (x, y)
     {
-        let bullets = this.getFirstDead(false);
+        let bullet = this.getFirstDead(false);
 
-        if (bullets)
+        if (bullet)
         {
-            bullets.fire(x, y);
+            bullet.fire(x, y);
         }
     }
 }
@@ -67,8 +65,8 @@ class beanScene extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('bullet', 'img/projectiles/bean.png');
-        this.load.image('ship', 'img/eckerle/eckerleSprite.png');
+        this.load.image('bullet', 'assets/sprites/bullets/bullet7.png');
+        this.load.image('ship', 'assets/sprites/bsquadron1.png');
     }
 
     create ()
@@ -82,26 +80,19 @@ class beanScene extends Phaser.Scene
             this.ship.x = pointer.x;
 
         });
-        
-    }
-    update(){
-        // var timer = beanScene.time.addEvent({ delay: 500, callback: fireBullet, args: [], callbackScope: this, loop: true });
 
         this.input.on('pointerdown', (pointer) => {
 
             this.bullets.fireBullet(this.ship.x, this.ship.y);
 
         });
-
     }
-
 }
 
-let config = {
+const config = {
     type: Phaser.AUTO,
-    width: 1350,
-    height: 750,
-    scene: beanScene,
+    width: 800,
+    height: 600,
     parent: 'phaser-example',
     physics: {
         default: 'arcade',
@@ -109,8 +100,8 @@ let config = {
             debug: false,
             gravity: { y: 0 }
         }
-    }
-    
+    },
+    scene: Example
 };
 
 let game = new Phaser.Game(config);
