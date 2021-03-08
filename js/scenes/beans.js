@@ -65,8 +65,8 @@ class beanScene extends Phaser.Scene
 
     preload ()
     {
-        this.load.image('bullet', 'assets/sprites/bullets/bullet7.png');
-        this.load.image('ship', 'assets/sprites/bsquadron1.png');
+        this.load.image('bullet', 'img/projectiles/bean.png');
+        this.load.image('ship', 'img/eckerle/eckerleSprite.png');
     }
 
     create ()
@@ -93,7 +93,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    parent: 'phaser-example',
+    parent: 'main-game',
     physics: {
         default: 'arcade',
         arcade: {
@@ -101,7 +101,7 @@ const config = {
             gravity: { y: 0 }
         }
     },
-    scene: Example
+    scene: beanScene
 };
 
 let game = new Phaser.Game(config);
