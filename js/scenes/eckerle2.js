@@ -91,27 +91,14 @@ class gameScene extends Phaser.Scene {
         this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean bullet.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
-
             frameWidth: 120,
-
             frameHeight: 190,
-
         });
-        //this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
-
-            //frameWidth: 32,
-
-            //frameHeight: 32
-
-        //});
     }
 
-
     create() {
-
        // background
        let bg = this.add.sprite(0, 0, 'background');
-
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
 
@@ -133,12 +120,8 @@ class gameScene extends Phaser.Scene {
          ground.setImmovable();
          //add the colliders
          this.physics.add.collider(player, ground);
-        //  this.input.on('pointerdown', this.startJump, this);
-        //  this.input.on('pointerup', this.endJump, this);
-
        // scale down
        this.player.setScale(0.4);
-       
         this.enemies = this.add.group({
             key: 'boss',
             repeat: 0,
@@ -233,7 +216,6 @@ class gameScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    //this.player.setBounce(1, 1);
     }
     
     update() {
@@ -285,16 +267,7 @@ class gameScene extends Phaser.Scene {
                 this.gameOver();
                 break;
             }
-
-            
-            
-            
-
         }
-
-
-
-    
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -303,7 +276,6 @@ class gameScene extends Phaser.Scene {
             callbackScope: this,
             loop: true
         });
-    // this.player.setVelocityY(-100);
 }
     endJump() {
         this.timer.remove();
@@ -313,15 +285,10 @@ class gameScene extends Phaser.Scene {
     tick() {
         if (this.power < 200) {
             this.power += 200;
-            console.log(this.power);
         }
 }
-
-    gameOver() {
-        
+    gameOver() {       
     }
-
-
 }
 
 // our game's configuration
@@ -337,8 +304,7 @@ let config = {
             gravity: false
         }
     }
-    };
-    
+    };    
     // create the game, and pass it the configuration
     let game = new Phaser.Game(config);
 
