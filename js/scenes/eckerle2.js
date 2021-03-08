@@ -252,7 +252,6 @@ class gameScene extends Phaser.Scene {
 
         if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
             this.startJump();
-            console.log("jump");
         }
 
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
