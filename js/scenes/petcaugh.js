@@ -77,6 +77,8 @@ class petcaughScene extends Phaser.Scene {
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
         this.enemyMinY = 20;
+        this.playerHealth = 100;
+        this.healthBarX = 225;
     }
     
     preload() {
@@ -174,7 +176,6 @@ class petcaughScene extends Phaser.Scene {
     f9Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F9);
     f10Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F10);
     f11Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F11);
-    f12Key = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F12);
     forwardslashKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FORWARD_SLASH);
     minusKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.MINUS);
     periodKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PERIOD);
@@ -187,31 +188,31 @@ class petcaughScene extends Phaser.Scene {
     }
 
     update() {
-    // setting velocity variables
-      this.player.body.setVelocityX(0);
-      this.player.body.setVelocityY(0);
-    // keybinds' actions
-      if (this.cursors.left.isDown) {
-          this.player.body.setVelocityX(-350);
+      if (aKey.isDown) {
+        this.player.x -= 10;
+    }
+    if (this.cursors.left.isDown) {
+        this.player.body.x -= 10;
+    }
+    if (dKey.isDown) {
+        this.player.x += 10;
       }
-      if (this.cursors.right.isDown) {
-          this.player.body.setVelocityX(350);
-      }
-      if (this.cursors.up.isDown) {
-          this.player.body.setVelocityY(-350);
-      }
-      if (this.cursors.down.isDown) {
-          this.player.body.setVelocityY(350);
-      }
-      // only if the player is alive
-      if (!this.isPlayerAlive) {
-          return;
-      }
-      // check for active input
-      if (this.input.activePointer.isDown) {
-          // player walks
-          this.player.x += this.playerSpeed;
-      }
+    if (this.cursors.right.isDown) {
+        this.player.body.x += 10
+    }
+
+    if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
+        this.startJump();
+        console.log("jump");
+    }
+
+    if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
+        this.endJump();
+    }
+    if (!this.isPlayerAlive) {
+      return;
+  }
+
       //eck collision
       if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.eck.getBounds())) {
         this.gameOver();
@@ -247,4 +248,12 @@ class petcaughScene extends Phaser.Scene {
     
     // create the game, and pass it the configuration
     let game = new Phaser.Game(config);
+
+    function healthBar(scene) {
+      if (xKey.isDown && scene.playerHealth >= 0) {
+          scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
+          scene.playerHealth -= 0.5;
+          scene.healthBarX -= 1;
+      }
+  }
   
