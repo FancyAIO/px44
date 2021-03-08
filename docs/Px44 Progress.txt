@@ -99,3 +99,14 @@ Progress Day 10:
 
 . Debugging projectiles
 
+. Set goals for final weekend of alpha phase
+
+Day 11:
+
+. set time to meet and finish alpha phase (9:00 PM 2/7/2021)
+
+Day 12: 
+
+. Met on discord to finish alpha phase
+
+. fixed projectile code
