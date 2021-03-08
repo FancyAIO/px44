@@ -64,3 +64,10 @@ Team Leader Progress Day 5:
 . Shri and Syed finished sprites
 
 . Joe and Jaime made player and boss movement code
+
+Progress Day 6:
+. canvas was resized to 1350x750 to best fit on a surface pro
+
+. Main menu almost completed
+
+. set goals for the weekend
