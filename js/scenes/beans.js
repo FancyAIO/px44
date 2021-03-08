@@ -68,7 +68,7 @@ class beanScene extends Phaser.Scene
 
 }
 
-const config = {
+let config = {
     type: Phaser.AUTO,
     width: 1350,
     height: 750,
