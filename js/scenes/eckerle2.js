@@ -299,7 +299,7 @@ class gameScene extends Phaser.Scene {
 }
     startJump() {
         this.timer = this.time.addEvent({
-            delay: 100,
+            delay: 0,
             callback: this.tick,
             callbackScope: this,
             loop: true
@@ -312,8 +312,8 @@ class gameScene extends Phaser.Scene {
         this.power = 0;
 }
     tick() {
-        if (this.power < 50000) {
-            this.power += 100;
+        if (this.power < 200) {
+            this.power += 200;
             console.log(this.power);
         }
 }
