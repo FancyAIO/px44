@@ -85,7 +85,7 @@ class gameScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/bushek/Bushek background.jpg');
+        this.load.image('background', 'img/bushek/Bushek background.JPG');
         this.load.image('boss', 'img/bushek/bushekSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
