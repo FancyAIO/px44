@@ -86,3 +86,16 @@ Progress Day 8:
 . boss movement finished
 
 . projectile code started by Jaime and Joe
+
+Progress Day 9: 
+
+. health bars finished
+
+. debugging projectile code
+
+. Jeeth created overworld
+
+Progress Day 10:
+
+. Debugging projectiles
+
