@@ -70,8 +70,8 @@ class beanScene extends Phaser.Scene
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1350,
+    height: 750,
     scene: beanScene,
     parent: 'phaser-example',
     physics: {
