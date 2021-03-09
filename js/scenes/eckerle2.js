@@ -280,6 +280,9 @@ class gameScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
+            }
+
+            if (this.playerHealth <= 0) {
                 this.gameOver();
                 break;
             }
@@ -308,7 +311,11 @@ class gameScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {       
+    gameOver() {   
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;    
     }
 }
 class Bullet extends Phaser.Physics.Arcade.Sprite
