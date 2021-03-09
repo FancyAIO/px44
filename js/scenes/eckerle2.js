@@ -306,7 +306,9 @@ class gameScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {       
+    gameOver() {   
+        this.player.x = 100; 
+        this.player.y = 100;    
     }
 }
 class Bullet extends Phaser.Physics.Arcade.Sprite
