@@ -392,9 +392,5 @@ function healthBar(scene) {
         scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
         scene.playerHealth -= 0.5;
         scene.healthBarX -= 1;
-    if (scene.playerHealth <= 0) {
-        this.player.body.x = 100
-        this.player.body.y = 100
-    }
     }
 }
