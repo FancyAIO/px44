@@ -105,6 +105,7 @@ class gameScene extends Phaser.Scene {
        bg.setOrigin(0, 0);
 
        this.power=0;
+       this.isJumping;
 
          //define our objects
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
@@ -218,7 +219,6 @@ class gameScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-        this.power = 0
         
         this.bean = new bean(this);
 
@@ -248,7 +248,7 @@ class gameScene extends Phaser.Scene {
             this.player.body.x += 10
         }
 
-        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
+        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 140) {
             this.startJump();
         }
 
@@ -291,12 +291,17 @@ class gameScene extends Phaser.Scene {
             callback: this.tick,
             callbackScope: this,
             loop: true
+    
         });
+        this.endJump();
+        this.isJumping = false
 }
+
     endJump() {
         this.timer.remove();
         this.player.setVelocityY(-this.power * 10);
         this.power = 0;
+        this.isJumping = true;
 }
     tick() {
         if (this.power < 200) {
