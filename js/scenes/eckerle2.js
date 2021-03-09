@@ -280,6 +280,9 @@ class gameScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
+            }
+
+            if (this.playerHealth <= 0) {
                 this.gameOver();
                 break;
             }
