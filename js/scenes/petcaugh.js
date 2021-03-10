@@ -71,7 +71,7 @@ class petcaughScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'gameScene',
-            active: true
+            active: false
         });
     
         this.cursor = new Phaser.Math.Vector2();
@@ -85,9 +85,9 @@ class petcaughScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('background', 'img/petcaugh/petclaw background.JPG');
-        this.load.image('boss', 'img/petcaugh/petcaughSprite.PNG');
-        //this.load.image('player', 'img/pipo-nekonin001.png');
+        this.load.image('petcaughBackground', 'img/petcaugh/petclaw background.JPG');
+        this.load.image('petcaughBoss', 'img/petcaugh/petcaughSprite.PNG');
+        //this.load.image('player'F, 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean bullet.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
@@ -98,7 +98,7 @@ class petcaughScene extends Phaser.Scene {
 
     create() {
        // background
-       let bg = this.add.sprite(0, 0, 'background');
+       let bg = this.add.sprite(0, 0, 'petcaughBackground');
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
        bg.setScale(1.25)
@@ -124,7 +124,7 @@ class petcaughScene extends Phaser.Scene {
        // scale down
        this.player.setScale(0.4);
         this.enemies = this.add.group({
-            key: 'boss',
+            key: 'petcaughBoss',
             repeat: 0,
             setXY: {
                 x: 500,
@@ -292,22 +292,6 @@ class petcaughScene extends Phaser.Scene {
     }
 }
 
-// our game's configuration
-let config = {
-    type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-    width: 1350, // game width
-    height: 750, // game height
-    scene: petcaughScene, // our newly created scene
-    parent: 'main-game',
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: false
-        }
-    }
-    };    
-    // create the game, and pass it the configuration
-    let game = new Phaser.Game(config);
 
 function healthBar(scene) {
     if (scene.playerHealth >= 0) {

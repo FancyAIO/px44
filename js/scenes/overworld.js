@@ -70,7 +70,7 @@ var escKey;
 class overworldScene extends Phaser.Scene {
   constructor() {
       super({
-          key: 'gameScene',
+          key: 'overworldScene',
           active: true
       });
       this.cursor = new Phaser.Math.Vector2();
@@ -191,7 +191,7 @@ class overworldScene extends Phaser.Scene {
       
       if (aKey.isDown && !this.atMenu) {
         this.player.body.setVelocityX(-350);
-    }
+      }
       if (dKey.isDown && !this.atMenu) {
         this.player.body.setVelocityX(350);
       }
@@ -212,6 +212,9 @@ class overworldScene extends Phaser.Scene {
       }
       if (this.cursors.left.isDown && !this.atMenu) {
         this.player.body.setVelocityX(-350);
+      }
+      if (gKey.isDown && !this.atMenu) {
+        this.scene.start("eckerle2Scene")
       }
       // only if the player is alive
       if (!this.isPlayerAlive) {
@@ -277,24 +280,6 @@ class overworldScene extends Phaser.Scene {
     this.player.y = this.sys.game.config.height / 2;
   }
 }
-// our game's configuration
-let config = {
-  type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-  width: 1350, // game width
-  height: 750, // game height
-  scene: overworldScene, // our newly created scene
-  parent: 'main-game',
-  physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: false
-      }
-  }
-  };
-  
-   // create the game, and pass it the configuration
-   let game = new Phaser.Game(config); 
-
    function healthBar(scene) {
     if (xKey.isDown && scene.playerHealth >= 0) {
         scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
