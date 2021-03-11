@@ -1,0 +1,38 @@
+Server
+
+Completed
+1. Setting up code
+
+To-Do
+1. Fully connecting to devices
+
+Overworld
+
+Completed
+1. Connect scenes to Overworld
+
+To-Do
+1. Adding vendors
+
+
+Javascript
+
+Completed
+1. Keybinds
+2. Healthbars
+
+To-Do
+1. Jump fully working
+2. Currency
+3. Weapons
+4. Inventory
+
+
+Graphic Design
+
+Completed
+1. Creating original 4 boss sprites
+
+To-Do
+1. Resizing
+2. Last Boss Sprites
