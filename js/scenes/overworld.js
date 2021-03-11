@@ -216,6 +216,21 @@ class overworldScene extends Phaser.Scene {
       if (gKey.isDown && !this.atMenu) {
         this.scene.start("eckerle2Scene")
       }
+      if (hKey.isDown && !this.atMenu) {
+        this.scene.start("eckerleScene")
+      }
+      if (jKey.isDown && !this.atMenu) {
+        this.scene.start("petcaughScene")
+      }
+      if (kKey.isDown && !this.atMenu) {
+        this.scene.start("bestScene")
+      }
+      if (lKey.isDown && !this.atMenu) {
+        this.scene.start("bushekScene")
+      }
+      if (oKey.isDown && !this.atMenu) {
+        this.scene.start("coophestonScene")
+      }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
