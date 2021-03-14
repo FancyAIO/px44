@@ -83,19 +83,21 @@ class beanScene extends Phaser.Scene
             this.ship.x = pointer.x;
 
         });
+        /*
             this.timer = this.time.addEvent({
                 delay: 50,
                 callback: this.bullets.fireBullet(this.ship.x, this.ship.y),
                 callbackScope: this,
                 loop: true
             });
-
-        // this.input.on('pointerdown', (pointer) => {
-
-        //     this.bullets.fireBullet(this.ship.x, this.ship.y);
+        */
+        this.input.on('pointerdown', (pointer) => {
+            this.bullets.fireBullet(this.ship.x, this.ship.y);
+        });
 
         };
     }
+
 
 
 const config = {

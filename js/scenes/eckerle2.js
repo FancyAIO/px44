@@ -87,8 +87,8 @@ class eckerle2Scene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('eckerle2Background', 'img/other/bossbackground1.JPG');
-        this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckerleSprite.png');
+        this.load.image('eckerle2Background', 'img/eckerle/Eck background.JPG');
+        this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckresize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean.png')
@@ -105,7 +105,6 @@ class eckerle2Scene extends Phaser.Scene {
        bg.setOrigin(0, 0);
 
        this.power=0;
-       this.isJumping;
 
          //define our objects
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
@@ -130,7 +129,7 @@ class eckerle2Scene extends Phaser.Scene {
             repeat: 0,
             setXY: {
                 x: 500,
-                y: 600,
+                y: 620,
                 stepX: 80,
                 stepY: 20
             }
@@ -140,7 +139,7 @@ class eckerle2Scene extends Phaser.Scene {
         Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.5, 0.5);
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-        enemy.speed = Math.random() * 2 + 1;
+        enemy.speed = 3;
     }, this);
 
     // player is alive
@@ -229,9 +228,10 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
-
-
-
+    this.bean = new bean(this);
+    this.input.on('pointerdown', (pointer) => {
+    player.x = this.pointer.x
+    });
     
     }
     update() {
@@ -248,7 +248,7 @@ class eckerle2Scene extends Phaser.Scene {
             this.player.body.x += 10
         }
 
-        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 140) {
+        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
             this.startJump();
         }
 
@@ -287,6 +287,9 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
         }
+        this.input.on('pointerdown', (pointer) => {
+            this.bean.fireBullet(this.player.x, this.player.y);
+        });
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -294,17 +297,13 @@ class eckerle2Scene extends Phaser.Scene {
             callback: this.tick,
             callbackScope: this,
             loop: true
-    
         });
-        this.endJump();
-        this.isJumping = false
 }
 
     endJump() {
         this.timer.remove();
         this.player.setVelocityY(-this.power * 10);
         this.power = 0;
-        this.isJumping = true;
 }
     tick() {
         if (this.power < 200) {
