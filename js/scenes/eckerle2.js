@@ -299,7 +299,7 @@ class eckerle2Scene extends Phaser.Scene {
 
     endJump() {
         this.timer.remove();
-        this.player.setVelocityY(-this.power * 11);
+        this.player.setVelocityY(-this.power * 11.5);
         this.power = 0;
 }
     tick() {
@@ -320,7 +320,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.y = 100;    
     }
 }
-}
+
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
