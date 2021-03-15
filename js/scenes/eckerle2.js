@@ -257,7 +257,9 @@ class eckerle2Scene extends Phaser.Scene {
         if (!this.isPlayerAlive) {
             return;
         }
-
+        if (oKey.isDown && !this.atMenu) {
+            this.scene.start("overworldScene")
+        }
         // enemy movement
         let enemies = this.enemies.getChildren();
         let numEnemies = enemies.length;
