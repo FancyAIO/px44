@@ -240,7 +240,9 @@ class gameScene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
             this.endJump();
         }
-
+        if (oKey.isDown && !this.atMenu) {
+            this.scene.start("overworldScene")
+        }
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;

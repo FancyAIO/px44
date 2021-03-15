@@ -46,7 +46,6 @@ var f8Key;
 var f9Key;
 var f10Key;
 var f11Key;
-var f12Key;
 var forwardslashKey;
 var minusKey;
 var periodKey;
@@ -85,7 +84,7 @@ class eckerleScene extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('eckerleBackground', 'img/other/bossbackground1.JPG');
+        this.load.image('eckerle2Background', 'img/Eck background.JPG');
         this.load.image('eckerleBoss', 'img/eckerle/eckerleSprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
@@ -239,7 +238,9 @@ class eckerleScene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
             this.endJump();
         }
-
+        if (oKey.isDown && !this.atMenu) {
+            this.scene.start("overworldScene")
+        }
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;
