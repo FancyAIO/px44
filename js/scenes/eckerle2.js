@@ -90,7 +90,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.load.image('eckerle2Background', 'img/eckerle/Eck background.JPG');
         this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckresize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/other/block.png');
+        this.load.image('block', 'img/other/grass3.png');
         this.load.image('bean', 'img/projectiles/bean.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
             frameWidth: 120,
@@ -130,7 +130,7 @@ class eckerle2Scene extends Phaser.Scene {
             repeat: 0,
             setXY: {
                 x: 500,
-                y: 620,
+                y: 642,
                 stepX: 80,
                 stepY: 20
             }
@@ -229,10 +229,6 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
-    this.bean = new bean(this);
-    this.input.on('pointerdown', (pointer) => {
-        player.x = this.pointer.x
-    });
     
     }
     update() {
@@ -249,7 +245,7 @@ class eckerle2Scene extends Phaser.Scene {
             this.player.body.x += 10
         }
 
-        if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+        if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
             this.startJump();
         }
 
@@ -303,7 +299,7 @@ class eckerle2Scene extends Phaser.Scene {
 
     endJump() {
         this.timer.remove();
-        this.player.setVelocityY(-this.power * 10);
+        this.player.setVelocityY(-this.power * 11);
         this.power = 0;
 }
     tick() {
