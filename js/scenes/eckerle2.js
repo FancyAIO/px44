@@ -256,9 +256,7 @@ class eckerle2Scene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
             this.endJump();
         }
-        if (oKey.isDown && !this.atMenu) {
-            this.scene.start("overworldScene")
-        }
+
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;
@@ -319,6 +317,13 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.x = 100; 
         this.player.y = 100;    
     }
+    gameOver() {   
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;    
+    }
+}
 }
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
