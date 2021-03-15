@@ -320,7 +320,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.y = 100;    
     }
 }
-}
+
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
