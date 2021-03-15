@@ -103,6 +103,7 @@ class eckerle2Scene extends Phaser.Scene {
        let bg = this.add.sprite(0, 0, 'eckerle2Background');
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
+       bg.setScale(1.1)
 
        this.power=0;
 
@@ -230,7 +231,7 @@ class eckerle2Scene extends Phaser.Scene {
             });
     this.bean = new bean(this);
     this.input.on('pointerdown', (pointer) => {
-    player.x = this.pointer.x
+        player.x = this.pointer.x
     });
     
     }
