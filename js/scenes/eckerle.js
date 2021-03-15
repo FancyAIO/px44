@@ -46,7 +46,6 @@ var f8Key;
 var f9Key;
 var f10Key;
 var f11Key;
-var f12Key;
 var forwardslashKey;
 var minusKey;
 var periodKey;
