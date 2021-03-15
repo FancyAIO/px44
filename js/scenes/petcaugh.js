@@ -109,7 +109,7 @@ class petcaughScene extends Phaser.Scene {
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
          this.player = player
          //set the gravity
-         player.setGravityY(5000);
+         player.setGravityY(7500);
          player.setOrigin(100, 100);
          //place the ground
          let groundX = this.sys.game.config.width / 2;
