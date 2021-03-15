@@ -216,9 +216,11 @@ class overworldScene extends Phaser.Scene {
       if (gKey.isDown && !this.atMenu) {
         this.scene.start("eckerle2Scene")
       }
+      //Background is broken
       if (hKey.isDown && !this.atMenu) {
         this.scene.start("eckerleScene")
       }
+      // Black screen when switching
       if (jKey.isDown && !this.atMenu) {
         this.scene.start("petcaughScene")
       }
@@ -228,6 +230,7 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
+      //Black screen when switching
       if (oKey.isDown && !this.atMenu) {
         this.scene.start("coophestonScene")
       }
