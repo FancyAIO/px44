@@ -100,7 +100,7 @@ class eckerleScene extends Phaser.Scene {
        let bg = this.add.sprite(0, 0, 'eckerle2Background');
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
-
+       bg.setScale(1.25);
        this.power=0;
 
          //define our objects
@@ -288,7 +288,11 @@ class eckerleScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {       
+    gameOver() {   
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;     
     }
 }
 

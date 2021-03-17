@@ -290,7 +290,11 @@ class bushekScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {       
+    gameOver() {
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;        
     }
 }
 

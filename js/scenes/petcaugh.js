@@ -46,7 +46,6 @@ var f8Key;
 var f9Key;
 var f10Key;
 var f11Key;
-var f12Key;
 var forwardslashKey;
 var minusKey;
 var periodKey;
@@ -70,7 +69,7 @@ var escKey;
 class petcaughScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
+            key: 'petcaughScene',
             active: false
         });
     
@@ -101,8 +100,7 @@ class petcaughScene extends Phaser.Scene {
        let bg = this.add.sprite(0, 0, 'petcaughBackground');
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
-       bg.setScale(1.25)
-
+       bg.setScale(1.25);
        this.power=0;
 
          //define our objects
@@ -290,7 +288,11 @@ class petcaughScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {       
+    gameOver() {   
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;     
     }
 }
 
