@@ -216,7 +216,6 @@ class overworldScene extends Phaser.Scene {
       if (gKey.isDown && !this.atMenu) {
         this.scene.start("eckerle2Scene")
       }
-      //Background is broken
       if (hKey.isDown && !this.atMenu) {
         this.scene.start("eckerleScene")
       }
