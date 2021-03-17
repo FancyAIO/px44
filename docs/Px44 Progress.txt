@@ -1,4 +1,4 @@
-Develop
+
 Daily Team Leader Tasks:
 
 1. check on status of all game components
@@ -11,7 +11,6 @@ Daily Team Leader Tasks:
 Team leader Progress Day 1:
 =======
 Team leader Progress:
-main
 
 Organized Team into several categories to Focus on:
 
@@ -25,7 +24,6 @@ Jeeth: Creating and designing the overworld, as well as connecting scenes
 
 Grant: General Javascript, specifically menues
 
- Develop
 Nipper: Working on HTML doc and controls, as well as general javascript
 
 Team Leader Progress Day 2:
@@ -55,7 +53,60 @@ Team Leader Progress Day 4:
 . The template was used to receive permission from the first four teachers. We are now allowed to use their likenesses in the game
 
 . A team Trello board was created in order to better keep track of what needs to be completed for the alpha build
-=======
-Nipper: Working on HTML doc and controls
 
-main
+Team Leader Progress Day 5:
+. Dylan found backgrounds to use for all of the 4 initial boss battles
+
+. Grant began work on the main menu
+
+. Nipper worked on the jump function
+
+. Shri and Syed finished sprites
+
+. Joe and Jaime made player and boss movement code
+
+Progress Day 6:
+. canvas was resized to 1350x750 to best fit on a surface pro
+
+. Main menu almost completed
+
+. set goals for the weekend
+
+Progress Day 7:
+.Main menus finished
+
+.img files organized
+
+. player movement finished
+
+Progress Day 8:
+
+. Grant started health bars
+
+. boss movement finished
+
+. projectile code started by Jaime and Joe
+
+Progress Day 9: 
+
+. health bars finished
+
+. debugging projectile code
+
+. Jeeth created overworld
+
+Progress Day 10:
+
+. Debugging projectiles
+
+. Set goals for final weekend of alpha phase
+
+Day 11:
+
+. set time to meet and finish alpha phase (9:00 PM 2/7/2021)
+
+Day 12: 
+
+. Met on discord to finish alpha phase
+
+. fixed projectile code

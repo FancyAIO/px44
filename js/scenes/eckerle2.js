@@ -67,11 +67,11 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class gameScene extends Phaser.Scene {
+class eckerle2Scene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'gameScene',
-            active: true
+            key: 'eckerle2Scene',
+            active: false
         });
     
         this.cursor = new Phaser.Math.Vector2();
@@ -82,38 +82,28 @@ class gameScene extends Phaser.Scene {
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
+        this.bean;
+        this.boss;
     }
     
     preload() {
-        this.load.image('background', 'img/other/bossbackground1.JPG');
-        this.load.image('boss', 'img/eckerle/eckerleSprite.png');
+        this.load.image('eckerle2Background', 'img/eckerle/Eck background.JPG');
+        this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckresize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
-        this.load.image('block', 'img/other/block.png');
-        this.load.image('bean', 'img/projectiles/bean bullet.png')
+        this.load.image('block', 'img/other/grass3.png');
+        this.load.image('bean', 'img/projectiles/bean.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
-
             frameWidth: 120,
-
             frameHeight: 190,
-
         });
-        //this.load.spritesheet('player', 'img/pipo-nekonin001.png', {
-
-            //frameWidth: 32,
-
-            //frameHeight: 32
-
-        //});
     }
 
-
     create() {
-
        // background
-       let bg = this.add.sprite(0, 0, 'background');
-
+       let bg = this.add.sprite(0, 0, 'eckerle2Background');
        // change origin to the top-left of the sprite
        bg.setOrigin(0, 0);
+       bg.setScale(1.1)
 
        this.power=0;
 
@@ -121,7 +111,7 @@ class gameScene extends Phaser.Scene {
          let player = this.physics.add.sprite(this.sys.game.config.height/ 700, 775, "player");
          this.player = player
          //set the gravity
-         player.setGravityY(5000);
+         player.setGravityY(7500);
          player.setOrigin(100, 100);
          //place the ground
          let groundX = this.sys.game.config.width / 2;
@@ -133,18 +123,14 @@ class gameScene extends Phaser.Scene {
          ground.setImmovable();
          //add the colliders
          this.physics.add.collider(player, ground);
-        //  this.input.on('pointerdown', this.startJump, this);
-        //  this.input.on('pointerup', this.endJump, this);
-
        // scale down
        this.player.setScale(0.4);
-       
         this.enemies = this.add.group({
-            key: 'boss',
+            key: 'eckerle2Boss',
             repeat: 0,
             setXY: {
                 x: 500,
-                y: 600,
+                y: 642,
                 stepX: 80,
                 stepY: 20
             }
@@ -154,7 +140,7 @@ class gameScene extends Phaser.Scene {
         Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.5, 0.5);
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-        enemy.speed = Math.random() * 2 + 1;
+        enemy.speed = 3;
     }, this);
 
     // player is alive
@@ -233,9 +219,22 @@ class gameScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    //this.player.setBounce(1, 1);
-    }
+        
+        this.bean = new bean(this);
+
+        // });
+            this.timer = this.time.addEvent({
+                delay: 50,
+                callback: this.bean.fireBullet(this.boss.x, this.boss.y),
+                callbackScope: this,
+                repeat: 5
+            });
+    this.bean = new bean(this);
+    this.input.on('pointerdown', (pointer) => {
+        player.x = this.pointer.x
+    });
     
+    }
     update() {
         if (aKey.isDown) {
             this.player.x -= 10;
@@ -257,7 +256,9 @@ class gameScene extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustUp(spaceKey)) {
             this.endJump();
         }
-
+        if (oKey.isDown && !this.atMenu) {
+            this.scene.start("overworldScene")
+        }
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;
@@ -282,19 +283,16 @@ class gameScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
+            }
+
+            if (this.playerHealth <= 0) {
                 this.gameOver();
                 break;
             }
-
-            
-            
-            
-
         }
-
-
-
-    
+        this.input.on('pointerdown', (pointer) => {
+            this.bean.fireBullet(this.player.x, this.player.y);
+        });
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -303,44 +301,85 @@ class gameScene extends Phaser.Scene {
             callbackScope: this,
             loop: true
         });
-    // this.player.setVelocityY(-100);
 }
+
     endJump() {
         this.timer.remove();
-        this.player.setVelocityY(-this.power * 10);
+        this.player.setVelocityY(-this.power * 11.5);
         this.power = 0;
 }
     tick() {
         if (this.power < 200) {
             this.power += 200;
-            console.log(this.power);
         }
 }
-
-    gameOver() {
-        
+    gameOver() {   
+        this.playerHealth = 100;
+        this.healthBarX = 225;
+        this.player.x = 100; 
+        this.player.y = 100;    
     }
-
-
-}
-
-// our game's configuration
-let config = {
-    type: Phaser.AUTO, //Phaser will decide how to render our game (WebGL or Canvas)
-    width: 1350, // game width
-    height: 750, // game height
-    scene: gameScene, // our newly created scene
-    parent: 'main-game',
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: false
-        }
+    gameOver2() {   
+        this.player.x = 100; 
+        this.player.y = 100;
+           
     }
-    };
     
-    // create the game, and pass it the configuration
-    let game = new Phaser.Game(config);
+}
+class Bullet extends Phaser.Physics.Arcade.Sprite
+{
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'bullet');
+    }
+
+    fire (x, y)
+    {
+        this.body.reset(x, y);
+
+        this.setActive(true);
+        this.setVisible(true);
+
+        this.setVelocityX(-300);
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        if (this.x <= -32)
+        {
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
+}
+
+class bean extends Phaser.Physics.Arcade.Group
+{
+    constructor (scene)
+    {
+        super(scene.physics.world, scene);
+
+        this.createMultiple({
+            frameQuantity: 5,
+            key: 'bullet',
+            active: false,
+            visible: false,
+            classType: Bullet
+        });
+    }
+
+    fireBullet (x, y)
+    {
+        let bullet = this.getFirstDead(false);
+
+        if (bullet)
+        {
+            bullet.fire(x, y);
+        }
+    }
+}
 
 function healthBar(scene) {
     if (scene.playerHealth >= 0) {
