@@ -229,11 +229,12 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
+    /*
     this.bean = new bean(this);
     this.input.on('pointerdown', (pointer) => {
         player.x = this.pointer.x
     });
-    
+    */
     }
     update() {
         if (aKey.isDown) {
@@ -245,6 +246,11 @@ class eckerle2Scene extends Phaser.Scene {
         if (dKey.isDown) {
             this.player.x += 10;
           }
+
+        if (fKey.isDown) {
+            this.bean.fireBullet(this.player.body.x, this.player.body.y)
+        }
+
         if (this.cursors.right.isDown) {
             this.player.body.x += 10
         }
@@ -290,9 +296,6 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
         }
-        this.input.on('pointerdown', (pointer) => {
-            this.bean.fireBullet(this.player.x, this.player.y);
-        });
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -330,7 +333,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
     {
-        super(scene, x, y, 'bullet');
+        super(scene, x, y, 'bean');
     }
 
     fire (x, y)
@@ -340,7 +343,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
         this.setActive(true);
         this.setVisible(true);
 
-        this.setVelocityX(-300);
+        this.setVelocityX(300);
     }
 
     preUpdate (time, delta)
@@ -362,8 +365,8 @@ class bean extends Phaser.Physics.Arcade.Group
         super(scene.physics.world, scene);
 
         this.createMultiple({
-            frameQuantity: 5,
-            key: 'bullet',
+            frameQuantity: 256,
+            key: 'bean',
             active: false,
             visible: false,
             classType: Bullet
