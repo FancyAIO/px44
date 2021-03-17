@@ -247,7 +247,7 @@ class eckerle2Scene extends Phaser.Scene {
             this.player.x += 10;
           }
 
-        if (fKey.isDown) {
+        if (Phaser.Input.Keyboard.JustDown(fKey)) {
             this.bean.fireBullet(this.player.body.x, this.player.body.y)
         }
 
