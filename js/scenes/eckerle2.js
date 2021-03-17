@@ -229,6 +229,10 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
+    this.bean = new bean(this);
+    this.input.on('pointerdown', (pointer) => {
+        player.x = this.pointer.x
+    });
     
     }
     update() {
@@ -257,9 +261,7 @@ class eckerle2Scene extends Phaser.Scene {
         if (!this.isPlayerAlive) {
             return;
         }
-        if (oKey.isDown && !this.atMenu) {
-            this.scene.start("overworldScene")
-        }
+
         // enemy movement
         let enemies = this.enemies.getChildren();
         let numEnemies = enemies.length;
@@ -315,14 +317,13 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.x = 100; 
         this.player.y = 100;    
     }
-    gameOver() {   
-        this.playerHealth = 100;
-        this.healthBarX = 225;
+    gameOver2() {   
         this.player.x = 100; 
-        this.player.y = 100;    
+        this.player.y = 100;
+           
     }
+    
 }
-
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
