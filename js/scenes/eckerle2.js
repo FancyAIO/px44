@@ -82,6 +82,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
+        this.loadedHealthBar = false;
         this.bean;
         this.boss;
     }
@@ -296,6 +297,11 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
         }
+
+        if (!this.loadedHealthBar) {
+            healthBar(this);
+            this.loadedHealthBar = true;
+        }
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -320,7 +326,8 @@ class eckerle2Scene extends Phaser.Scene {
         this.playerHealth = 100;
         this.healthBarX = 225;
         this.player.x = 100; 
-        this.player.y = 100;    
+        this.player.y = 100;   
+        healthBar(this); 
     }
     gameOver2() {   
         this.player.x = 100; 
@@ -391,3 +398,20 @@ function healthBar(scene) {
         scene.healthBarX -= 1;
     }
 }
+
+const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    parent: 'main-game',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false,
+            gravity: { y: 0 }
+        }
+    },
+    scene: eckerle2Scene
+};
+
+let game = new Phaser.Game(config);
