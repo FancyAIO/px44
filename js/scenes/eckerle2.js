@@ -78,7 +78,7 @@ class eckerle2Scene extends Phaser.Scene {
     
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
-        this.enemyMinY = 20;
+        this.enemyMinY = 620;
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
@@ -320,7 +320,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.playerHealth = 100;
         this.healthBarX = 225;
         this.player.x = 100; 
-        this.player.y = 100;    
+        this.player.y = 100;   
     }
     gameOver2() {   
         this.player.x = 100; 

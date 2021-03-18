@@ -86,7 +86,7 @@ class bushekScene extends Phaser.Scene {
     
     preload() {
         this.load.image('bushekBackground', 'img/bushek/Bushek background.JPG');
-        this.load.image('bushekBoss', 'img/bushek/bushekSprite.png');
+        this.load.image('bushekBoss', 'img/bushek/BushekResize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean bullet.png')
@@ -267,8 +267,12 @@ class bushekScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
+                //this.gameOver();
+                //break;
+            }
+            if (this.playerHealth <= 0) {
                 this.gameOver();
-                break;
+                //break;
             }
         }
 }
