@@ -264,7 +264,7 @@ class eckerle2Scene extends Phaser.Scene {
             this.endJump();
         }
         if (oKey.isDown && !this.atMenu) {
-            this.scene.start("overworldScene")
+            this.scene.start("overworldScene");
         }
         // only if the player is alive
         if (!this.isPlayerAlive) {
@@ -398,20 +398,3 @@ function healthBar(scene) {
         scene.healthBarX -= 1;
     }
 }
-
-const config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    parent: 'main-game',
-    physics: {
-        default: 'arcade',
-        arcade: {
-            debug: false,
-            gravity: { y: 0 }
-        }
-    },
-    scene: eckerle2Scene
-};
-
-let game = new Phaser.Game(config);
