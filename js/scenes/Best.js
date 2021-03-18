@@ -292,10 +292,10 @@ class bestScene extends Phaser.Scene {
         }
 }
     gameOver() {
-        this.playerHealth = 100;
-        this.healthBarX = 225;
-        this.player.x = 100; 
-        this.player.y = 100;        
+        //this.playerHealth = 100;
+        //this.healthBarX = 225;
+        //this.player.x = 100; 
+        //this.player.y = 100;        
     }
 }
 
