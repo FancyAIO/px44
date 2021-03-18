@@ -103,7 +103,7 @@ class overworldScene extends Phaser.Scene {
     // player
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
-     this.player.setScale(0.5);
+     this.player.setScale(0.2);
            
   // player is alive
   this.isPlayerAlive = true;
