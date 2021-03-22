@@ -229,10 +229,6 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
-      //Black screen when switching
-      if (oKey.isDown && !this.atMenu) {
-        this.scene.start("coophestonScene")
-      }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
