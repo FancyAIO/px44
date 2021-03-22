@@ -137,7 +137,7 @@ class bushekScene extends Phaser.Scene {
         Phaser.Actions.ScaleXY(this.enemies.getChildren(), 0.5, 0.5);
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-        enemy.speed = Math.random() * 2 + 1;
+        enemy.speed = 3;
     }, this);
 
     // player is alive

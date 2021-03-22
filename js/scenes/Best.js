@@ -86,7 +86,7 @@ class bestScene extends Phaser.Scene {
     
     preload() {
         this.load.image('bestBackground', 'img/best/Bestbackground.jpg');
-        this.load.image('bestBoss', 'img/best/bestSprite.png');
+        this.load.image('bestBoss', 'img/best/bestResize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
         this.load.image('bean', 'img/projectiles/bean bullet.png')
@@ -128,7 +128,7 @@ class bestScene extends Phaser.Scene {
             repeat: 0,
             setXY: {
                 x: 500,
-                y: 600,
+                y: 640,
                 stepX: 80,
                 stepY: 20
             }
@@ -138,7 +138,7 @@ class bestScene extends Phaser.Scene {
         Phaser.Actions.ScaleXY(this.enemies.getChildren(), 3.0, 3.0);
        // set speeds
        Phaser.Actions.Call(this.enemies.getChildren(), function (enemy) {
-        enemy.speed = Math.random() * 2 + 1;
+        enemy.speed = 3
     }, this);
 
     // player is alive
