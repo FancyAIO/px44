@@ -78,7 +78,7 @@ class bestScene extends Phaser.Scene {
     
         this.playerSpeed = 0.1;
         this.enemyMaxY = 1200;
-        this.enemyMinY = 20;
+        this.enemyMinY = 619;
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
@@ -89,7 +89,7 @@ class bestScene extends Phaser.Scene {
         this.load.image('bestBoss', 'img/best/bestResize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/block.png');
-        this.load.image('bean', 'img/projectiles/bean bullet.png')
+        this.load.image('bean', 'img/projectiles/bean.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
             frameWidth: 120,
             frameHeight: 190,
@@ -217,6 +217,7 @@ class bestScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
+    this.bean = new bean3(this);
     }
     
     update() {
@@ -231,6 +232,10 @@ class bestScene extends Phaser.Scene {
           }
         if (this.cursors.right.isDown) {
             this.player.body.x += 10
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(fKey)) {
+            this.bean.fireBullet(this.player.body.x, this.player.body.y)
         }
 
         if (Phaser.Input.Keyboard.JustDown(spaceKey) && this.player.y > 8200) {
@@ -299,6 +304,60 @@ class bestScene extends Phaser.Scene {
     }
 }
 
+class Bullet3 extends Phaser.Physics.Arcade.Sprite
+{
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'bean');
+    }
+
+    fire (x, y)
+    {
+        this.body.reset(x, y);
+
+        this.setActive(true);
+        this.setVisible(true);
+
+        this.setVelocityX(300);
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        if (this.x <= -32)
+        {
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
+}
+
+class bean3 extends Phaser.Physics.Arcade.Group
+{
+    constructor (scene)
+    {
+        super(scene.physics.world, scene);
+
+        this.createMultiple({
+            frameQuantity: 256,
+            key: 'bean',
+            active: false,
+            visible: false,
+            classType: Bullet2
+        });
+    }
+
+    fireBullet (x, y)
+    {
+        let bullet = this.getFirstDead(false);
+
+        if (bullet)
+        {
+            bullet.fire(x, y);
+        }
+    }
+}
 
 
 function healthBar(scene) {
