@@ -321,14 +321,9 @@ class eckerle2Scene extends Phaser.Scene {
         this.healthBarX = 225;
         this.player.x = 100; 
         this.player.y = 100;   
-    }
-    gameOver2() {   
-        this.player.x = 100; 
-        this.player.y = 100;
-           
-    }
-    
+    } 
 }
+
 class Bullet extends Phaser.Physics.Arcade.Sprite
 {
     constructor (scene, x, y)
