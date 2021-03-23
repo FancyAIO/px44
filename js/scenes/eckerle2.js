@@ -386,3 +386,10 @@ function healthBar(scene) {
         scene.healthBarX -= 1;
     }
 }
+function enemyHealthBar(scene) {
+    if (scene.enemyHealth >= 0) {
+        scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0xff0000).setStrokeStyle(4, 0x000000);
+        scene.enemyHealth -= 0.5;
+        scene.healthBarX -= 1;
+    }
+}
