@@ -77,8 +77,8 @@ class eckerle2Scene extends Phaser.Scene {
         this.cursor = new Phaser.Math.Vector2();
     
         this.playerSpeed = 0.1;
-        this.enemyMaxY = 1200;
-        this.enemyMinY = 620;
+        this.enemyMaxX = 1200;
+        this.enemyMinX = 50;
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
@@ -280,9 +280,9 @@ class eckerle2Scene extends Phaser.Scene {
             enemies[i].x += enemies[i].speed;
 
             // reverse movement if reached the edges
-            if (enemies[i].x >= this.enemyMaxY && enemies[i].speed > 0) {
+            if (enemies[i].x >= this.enemyMaxX && enemies[i].speed > 0) {
                 enemies[i].speed *= -1;
-            } else if (enemies[i].x <= this.enemyMinY && enemies[i].speed < 0) {
+            } else if (enemies[i].x <= this.enemyMinX && enemies[i].speed < 0) {
                 enemies[i].speed *= -1;
             }
 
