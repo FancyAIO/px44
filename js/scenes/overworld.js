@@ -181,8 +181,8 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-  new Grid(scene [0] [0] [1350] [750] [32] [32]);
-
+  var debugGrid = new Grid(scene [0] [0] [1350] [750] [32] [32]);
+debugGrid.active(false);
 }
   
   update() {
@@ -231,9 +231,13 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
-      //Black screen when switching
-      if (oKey.isDown && !this.atMenu) {
-        this.scene.start("coophestonScene")
+      if (RKey.isDown && !this.atMenu) {
+        if (this.debuGrid.active == true){
+          this.debugGrid.active(false);
+        }
+        else {
+          this.debuGrid.active(true);
+        }
       }
       // only if the player is alive
       if (!this.isPlayerAlive) {
