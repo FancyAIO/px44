@@ -103,7 +103,7 @@ class overworldScene extends Phaser.Scene {
     // player
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
-     this.player.setScale(0.5);
+     this.player.setScale(0.2);
            
   // player is alive
   this.isPlayerAlive = true;
@@ -181,7 +181,24 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
+    var g1 = this.add.grid(500, 500, 128, 96, 32, 32, 0x057605);
+
+    var g2 = this.add.grid(300, 340, 512, 256, 64, 64, 0x00b9f2).setAltFillStyle(0x016fce).setOutlineStyle();
+
+    var g3 = this.add.grid(600, 300, 100, 500, 48, 128, 0xc145ea).setAltFillStyle(0xb038d7).setOutlineStyle().setAngle(-20);
+
+    this.tweens.add({
+
+        targets: g1,
+        scaleX: 0.25,
+        scaleY: 0.5,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut'
+
+    });
   }
+    
   
   update() {
     // setting velocity variables
@@ -229,10 +246,14 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
-      //Black screen when switching
-      if (oKey.isDown && !this.atMenu) {
-        this.scene.start("coophestonScene")
-      }
+      // if (rKey.isDown && !this.atMenu) {
+      //   if (this.debuGrid.active == true){
+      //     this.debugGrid.active(false);
+      //   }
+      //   else {
+      //     this.debuGrid.active(true);
+      //   }
+      // }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
