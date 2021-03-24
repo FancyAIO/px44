@@ -181,9 +181,9 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-    //var g1 = this.add.grid(0, 0, 1350, 750, 32, 32).setAltFillStyle().setOutlineStyle(000000);
+    var g1 = this.add.grid(0, 0, 1350, 750, 32, 32).setAltFillStyle().setOutlineStyle(000000);
   }
-    
+  
   
   update() {
     // setting velocity variables
@@ -276,6 +276,11 @@ class overworldScene extends Phaser.Scene {
           rect = scene.add.rectangle(675, 400, 300, 150, 0x00ff00).setStrokeStyle(4, 0x000000);
           text = scene.add.text(623, 375, 'Start', { font: "45px Arial", fill: "#000000" });
           title = scene.add.text(600, 125, 'PX44', { font: "65px Arial", fill: "#000000" });
+          rect = scene.add.rectangle(675, 650, 600, 200, 0x00ff00).setStrokeStyle(4, 0x000000);
+          title = scene.add.text(575, 550, 'Controls', { font: "65px Arial", fill: "#000000" });
+          text = scene.add.text(450, 600, 'Arrow keys = movement', { font: "45px Arial", fill: "#000000" });
+          text = scene.add.text(410, 640, 'G,K,H,L keys = fight bosses', { font: "45px Arial", fill: "#000000" });
+          text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
           scene.createdMenu = true;
         }
          
