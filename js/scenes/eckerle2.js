@@ -299,15 +299,15 @@ class eckerle2Scene extends Phaser.Scene {
                 this.gameOver();
                 break;
             }
-/*
+
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.bean.getBounds(), enemies[i].getBounds())) {
                 enemyHealthBar(this);
             }
 
             if (this.enemyHealth <= 0) {
-
+                this.gameOver
             }
-            */
+            
         }
 }
     startJump() {

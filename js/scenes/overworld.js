@@ -181,7 +181,7 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-    var g1 = this.add.grid(0, 0, 1350, 750, 32, 32).setAltFillStyle().setOutlineStyle(000000);
+    //var g1 = this.add.grid(0, 0, 1350, 750, 32, 32).setAltFillStyle().setOutlineStyle(g00f00);
   }
   
   
