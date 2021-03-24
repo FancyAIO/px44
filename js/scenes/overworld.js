@@ -181,7 +181,7 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-    var g1 = this.add.grid(100, 100, 128, 96, 32, 32, 0x057605);
+    var g1 = this.add.grid(500, 500, 128, 96, 32, 32, 0x057605);
 
     var g2 = this.add.grid(300, 340, 512, 256, 64, 64, 0x00b9f2).setAltFillStyle(0x016fce).setOutlineStyle();
 
@@ -197,17 +197,6 @@ class overworldScene extends Phaser.Scene {
         ease: 'Sine.easeInOut'
 
     });
-
-    this.tweens.add({
-
-        targets: g3,
-        width: 400,
-        angle: -90,
-        yoyo: true,
-        repeat: -1,
-        ease: 'Sine.easeInOut'
-
-    })
   }
     
   
