@@ -220,7 +220,7 @@ class eckerle2Scene extends Phaser.Scene {
 
     this.player.setCollideWorldBounds(true);
         
-        this.bean = new bean(this);
+    this.bean = new bean(this);
 
         // });
             this.timer = this.time.addEvent({
