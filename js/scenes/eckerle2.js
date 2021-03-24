@@ -84,6 +84,10 @@ class eckerle2Scene extends Phaser.Scene {
         this.healthBarX = 225;
         this.bean;
         this.boss;
+
+        this.beanFire = true;
+        this.beanHit= false;
+        this.beanNoHit = false;
     }
     
     preload() {
@@ -91,7 +95,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckresize.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/grass3.png');
-        this.load.image('bean', 'img/projectiles/bean.png')
+        this.load.spritesheet('bean', 'img/projectiles/bean.png')
         this.load.spritesheet('player', 'img/other/garflief.JPG', {
             frameWidth: 120,
             frameHeight: 190,
@@ -296,6 +300,9 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
         }
+    if (!this.beanHit) {
+        break
+    }
 }
     startJump() {
         this.timer = this.time.addEvent({
