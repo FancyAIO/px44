@@ -248,7 +248,10 @@ class bestScene extends Phaser.Scene {
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
         }
-
+        if (rKey.isDown && !this.atMenu) {
+       
+            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+        }
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;

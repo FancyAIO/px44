@@ -67,7 +67,7 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class eckerle2Scene extends Phaser.Scene {
+class finalbossScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'eckerle2Scene',
@@ -264,6 +264,10 @@ class eckerle2Scene extends Phaser.Scene {
         }
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
+        }
+        if (rKey.isDown && !this.atMenu) {
+       
+            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
         }
         // only if the player is alive
         if (!this.isPlayerAlive) {

@@ -186,7 +186,6 @@ class overworldScene extends Phaser.Scene {
   
   
   update() {
-    var gridVisible = true
     // setting velocity variables
       this.player.body.setVelocityX(0);
       this.player.body.setVelocityY(0);
@@ -233,20 +232,15 @@ class overworldScene extends Phaser.Scene {
         this.scene.start("bushekScene")
       }
       if (rKey.isDown && !this.atMenu) {
-        if (gridVisible){
+       
           var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
-          gridVisible = false;
-        }
-        else {
-          g1 = this
-          gridVisible = true;
-        }
       }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
       }
-
+      
+         
 
       let rect;
       let text;
