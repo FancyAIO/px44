@@ -81,6 +81,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.enemyMinX = 620;
         this.timer;
         this.playerHealth = 100;
+        this.enemyHealth = 100;
         this.healthBarX = 225;
         this.bean;
         this.boss;
