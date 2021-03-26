@@ -220,7 +220,7 @@ class eckerle2Scene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    
+
     this.bean = new bean(this);
 
         // });
@@ -301,6 +301,7 @@ class eckerle2Scene extends Phaser.Scene {
                 enemyHealthBar(this);
                 this.bean.x = -100;
                 this.bean.y = -100;
+                console.log("hit")
             }
 
             if (this.enemyHealth <= 0) {
