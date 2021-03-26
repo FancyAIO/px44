@@ -66,6 +66,7 @@ var ctrlKey;
 var deleteKey;
 var enterKey;
 var escKey;
+var beanRect; 
 
 class eckerle2Scene extends Phaser.Scene {
     constructor() {
@@ -233,6 +234,7 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
+    beanRect = new Phaser.Geom.Rectangle(this.bean.x, this.bean.y, 32, 32);
     /*
     this.bean = new bean(this);
     this.input.on('pointerdown', (pointer) => {
@@ -274,6 +276,7 @@ class eckerle2Scene extends Phaser.Scene {
             return;
         }
 
+
         // enemy movement
         let enemies = this.enemies.getChildren();
         let numEnemies = enemies.length;
@@ -300,8 +303,8 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
 
-            if (Phaser.Geom.Intersects.RectangleToRectangle(this.bean.getChildren(), enemies[i].getBounds())) {
-                enemyHealthBar(this);
+            if (Phaser.Geom.Intersects.RectangleToRectangle(beanRect, enemies[i].getBounds())) {
+                //enemyHealthBar(this);
                 this.bean.x = -100;
                 this.bean.y = -100;
                 console.log("hit")
