@@ -225,6 +225,7 @@ class eckerle2Scene extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
 
     this.bean = new bean(this);
+    //new Phaser.Geom.Rectangle(this.player.body.x, this.player.body.y, this.bean.x, this.bean.y);
 
         // });
             this.timer = this.time.addEvent({
