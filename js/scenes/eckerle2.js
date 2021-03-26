@@ -86,6 +86,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.bean;
         this.boss;
+        this.endGame = false;
 
     }
     
@@ -308,6 +309,17 @@ class eckerle2Scene extends Phaser.Scene {
 
             if (this.enemyHealth <= 0) {
                 this.scene.start("overworldScene")
+                this.playerHealth = 100;
+                this.enemyHealth = 100;
+                this.healthBarX = 225;
+                this.enemyHealthBarX = 1125;
+                this.player.x = 100; 
+                this.player.y = 100;
+                this.endGame = true
+            }
+
+            if (this.endGame == true) {
+                this.reset();
             }
             
         }
@@ -339,6 +351,13 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.x = 100; 
         this.player.y = 100;   
     } 
+    reset() {
+        this.playerHealth = 100;
+        this.enemyHealth = 100;
+        this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
+        this.endGame = false;   
+    }
 }
 
 class Bullet extends Phaser.Physics.Arcade.Sprite
