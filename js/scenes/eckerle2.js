@@ -220,7 +220,7 @@ class eckerle2Scene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-      
+    
     this.bean = new bean(this);
 
         // });
@@ -299,8 +299,8 @@ class eckerle2Scene extends Phaser.Scene {
 
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.bean.getChildren(), enemies[i].getBounds())) {
                 enemyHealthBar(this);
-                this.bean.x = -1;
-                this.bean.y = -1;
+                this.bean.x = -100;
+                this.bean.y = -100;
             }
 
             if (this.enemyHealth <= 0) {
@@ -332,6 +332,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.playerHealth = 100;
         this.enemyHealth = 100;
         this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
         this.player.x = 100; 
         this.player.y = 100;   
     } 
@@ -401,8 +402,8 @@ function healthBar(scene) {
 }
 function enemyHealthBar(scene) {
     if (scene.enemyHealth >= 0) {
-        scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.enemyHealth * 4, 65, 0xff0000).setStrokeStyle(4, 0x000000);
+        scene.rect = scene.add.rectangle(scene.enemyHealthBarX, 75, scene.enemyHealth * 4, 65, 0xff0000).setStrokeStyle(4, 0x000000);
         scene.enemyHealth -= 0.5;
-        scene.healthBarX -= 1;
+        scene.enemyHealthBarX -= 1;
     }
 }
