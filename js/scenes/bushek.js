@@ -81,7 +81,10 @@ class bushekScene extends Phaser.Scene {
         this.enemyMinY = 620;
         this.timer;
         this.playerHealth = 100;
+        this.enemyHealth = 100
         this.healthBarX = 225;
+        this.enemyHealthBarX = 1125
+        this.endGame = false;
     }
     
     preload() {
@@ -217,6 +220,7 @@ class bushekScene extends Phaser.Scene {
 
     this.player.setCollideWorldBounds(true);
     this.bean = new bean2(this);
+    beanRect = new Phaser.Geom.Rectangle(this.bean.x, this.bean.y, 32, 32);
     }
     
     update() {
@@ -282,6 +286,27 @@ class bushekScene extends Phaser.Scene {
                 this.gameOver();
                 //break;
             }
+            if (Phaser.Geom.Intersects.RectangleToRectangle(beanRect, enemies[i].getBounds())) {
+                enemyHealthBar(this);
+                this.bean.x = -100;
+                this.bean.y = -100;
+                console.log("hit")
+            }
+
+            if (this.enemyHealth <= 0) {
+                this.scene.start("overworldScene")
+                this.playerHealth = 100;
+                this.enemyHealth = 100;
+                this.healthBarX = 225;
+                this.enemyHealthBarX = 1125;
+                this.player.x = 100; 
+                this.player.y = 100;
+                this.endGame = true
+            }
+
+            if (this.endGame == true) {
+                this.reset();
+            }
         }
 }
     startJump() {
@@ -302,11 +327,20 @@ class bushekScene extends Phaser.Scene {
             this.power += 200;
         }
 }
-    gameOver() {
+    gameOver() {   
         this.playerHealth = 100;
+        this.enemyHealth = 100;
         this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
         this.player.x = 100; 
-        this.player.y = 100;        
+        this.player.y = 100;   
+} 
+    reset() {
+        this.playerHealth = 100;
+        this.enemyHealth = 100;
+        this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
+        this.endGame = false;   
     }
 }
 
@@ -372,5 +406,12 @@ function healthBar(scene) {
         scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
         scene.playerHealth -= 0.5;
         scene.healthBarX -= 1;
+    }
+}
+function enemyHealthBar(scene) {
+    if (scene.enemyHealth >= 0) {
+        scene.rect = scene.add.rectangle(scene.enemyHealthBarX, 75, scene.enemyHealth * 4, 65, 0xff0000).setStrokeStyle(4, 0x000000);
+        scene.enemyHealth -= 0.5;
+        scene.enemyHealthBarX -= 1;
     }
 }

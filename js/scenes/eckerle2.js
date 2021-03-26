@@ -66,6 +66,7 @@ var ctrlKey;
 var deleteKey;
 var enterKey;
 var escKey;
+var beanRect; 
 
 class eckerle2Scene extends Phaser.Scene {
     constructor() {
@@ -86,6 +87,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.bean;
         this.boss;
+        this.endGame = false;
 
     }
     
@@ -232,6 +234,7 @@ class eckerle2Scene extends Phaser.Scene {
                 callbackScope: this,
                 repeat: 5
             });
+    beanRect = new Phaser.Geom.Rectangle(this.bean.x, this.bean.y, 32, 32);
     /*
     this.bean = new bean(this);
     this.input.on('pointerdown', (pointer) => {
@@ -277,6 +280,7 @@ class eckerle2Scene extends Phaser.Scene {
             return;
         }
 
+
         // enemy movement
         let enemies = this.enemies.getChildren();
         let numEnemies = enemies.length;
@@ -303,8 +307,8 @@ class eckerle2Scene extends Phaser.Scene {
                 break;
             }
 
-            if (Phaser.Geom.Intersects.RectangleToRectangle(this.bean.getChildren(), enemies[i].getBounds())) {
-                enemyHealthBar(this);
+            if (Phaser.Geom.Intersects.RectangleToRectangle(beanRect, enemies[i].getBounds())) {
+                //enemyHealthBar(this);
                 this.bean.x = -100;
                 this.bean.y = -100;
                 console.log("hit")
@@ -312,6 +316,17 @@ class eckerle2Scene extends Phaser.Scene {
 
             if (this.enemyHealth <= 0) {
                 this.scene.start("overworldScene")
+                this.playerHealth = 100;
+                this.enemyHealth = 100;
+                this.healthBarX = 225;
+                this.enemyHealthBarX = 1125;
+                this.player.x = 100; 
+                this.player.y = 100;
+                this.endGame = true
+            }
+
+            if (this.endGame == true) {
+                this.reset();
             }
             
         }
@@ -343,6 +358,13 @@ class eckerle2Scene extends Phaser.Scene {
         this.player.x = 100; 
         this.player.y = 100;   
     } 
+    reset() {
+        this.playerHealth = 100;
+        this.enemyHealth = 100;
+        this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
+        this.endGame = false;   
+    }
 }
 
 class Bullet extends Phaser.Physics.Arcade.Sprite
