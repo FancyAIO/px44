@@ -307,7 +307,7 @@ class eckerle2Scene extends Phaser.Scene {
             }
 
             if (this.enemyHealth <= 0) {
-                this.gameOver
+                this.scene.start("overworldScene")
             }
             
         }
