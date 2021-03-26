@@ -104,6 +104,7 @@ class overworldScene extends Phaser.Scene {
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
      this.player.setScale(0.2);
+  var g1 = this.add.grid(0, 0, 5000, 5000, 32, 32).setAltFillStyle().setOutlineStyle(100000);
            
   // player is alive
   this.isPlayerAlive = true;
@@ -181,7 +182,6 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-    //var g1 = this.add.grid(0, 0, 1350, 750, 32, 32).setAltFillStyle().setOutlineStyle(g00f00);
   }
   
   
