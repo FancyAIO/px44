@@ -104,7 +104,7 @@ class overworldScene extends Phaser.Scene {
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
      this.player.setScale(0.2);
-  var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+  
            
   // player is alive
   this.isPlayerAlive = true;
@@ -232,7 +232,7 @@ class overworldScene extends Phaser.Scene {
         this.scene.start("bushekScene")
       }
       if (rKey.isDown && !this.atMenu) {
-      
+        var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
       }
       // only if the player is alive
       if (!this.isPlayerAlive) {
