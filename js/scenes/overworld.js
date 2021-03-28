@@ -104,6 +104,7 @@ class overworldScene extends Phaser.Scene {
      this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
      // scale down player
      this.player.setScale(0.2);
+  
            
   // player is alive
   this.isPlayerAlive = true;
@@ -181,24 +182,8 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
-    var g1 = this.add.grid(500, 500, 128, 96, 32, 32, 0x057605);
-
-    var g2 = this.add.grid(300, 340, 512, 256, 64, 64, 0x00b9f2).setAltFillStyle(0x016fce).setOutlineStyle();
-
-    var g3 = this.add.grid(600, 300, 100, 500, 48, 128, 0xc145ea).setAltFillStyle(0xb038d7).setOutlineStyle().setAngle(-20);
-
-    this.tweens.add({
-
-        targets: g1,
-        scaleX: 0.25,
-        scaleY: 0.5,
-        yoyo: true,
-        repeat: -1,
-        ease: 'Sine.easeInOut'
-
-    });
   }
-    
+  
   
   update() {
     // setting velocity variables
@@ -246,19 +231,16 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
-      // if (rKey.isDown && !this.atMenu) {
-      //   if (this.debuGrid.active == true){
-      //     this.debugGrid.active(false);
-      //   }
-      //   else {
-      //     this.debuGrid.active(true);
-      //   }
-      // }
+      if (rKey.isDown && !this.atMenu) {
+       
+          var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+      }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
       }
-
+      
+         
 
       let rect;
       let text;
@@ -291,6 +273,11 @@ class overworldScene extends Phaser.Scene {
           rect = scene.add.rectangle(675, 400, 300, 150, 0x00ff00).setStrokeStyle(4, 0x000000);
           text = scene.add.text(623, 375, 'Start', { font: "45px Arial", fill: "#000000" });
           title = scene.add.text(600, 125, 'PX44', { font: "65px Arial", fill: "#000000" });
+          rect = scene.add.rectangle(675, 650, 600, 200, 0x00ff00).setStrokeStyle(4, 0x000000);
+          title = scene.add.text(575, 550, 'Controls', { font: "65px Arial", fill: "#000000" });
+          text = scene.add.text(450, 600, 'Arrow keys = movement', { font: "45px Arial", fill: "#000000" });
+          text = scene.add.text(410, 640, 'G,K,H,L keys = fight bosses', { font: "45px Arial", fill: "#000000" });
+          text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
           scene.createdMenu = true;
         }
          

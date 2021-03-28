@@ -67,7 +67,7 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class eckerle2Scene extends Phaser.Scene {
+class finalbossScene extends Phaser.Scene {
     constructor() {
         super({
             key: 'eckerle2Scene',
@@ -88,7 +88,7 @@ class eckerle2Scene extends Phaser.Scene {
     
     preload() {
         this.load.image('eckerle2Background', 'img/eckerle/Eck background.JPG');
-        this.boss = this.load.image('eckerle2Boss', 'img/eckerle/eckresize.png');
+        this.boss = this.load.image('finalBoss', 'img/projectiles/Burke Sprite.png');
         //this.load.image('player', 'img/pipo-nekonin001.png');
         this.load.image('block', 'img/other/grass3.png');
         this.load.image('bean', 'img/projectiles/bean.png')
@@ -264,6 +264,10 @@ class eckerle2Scene extends Phaser.Scene {
         }
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
+        }
+        if (rKey.isDown && !this.atMenu) {
+       
+            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
         }
         // only if the player is alive
         if (!this.isPlayerAlive) {

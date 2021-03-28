@@ -82,6 +82,10 @@ class bestScene extends Phaser.Scene {
         this.timer;
         this.playerHealth = 100;
         this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
+        this.bean;
+        this.boss;
+        this.endGame = false;
     }
     
     preload() {
@@ -248,7 +252,10 @@ class bestScene extends Phaser.Scene {
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
         }
-
+        if (rKey.isDown && !this.atMenu) {
+       
+            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+        }
         // only if the player is alive
         if (!this.isPlayerAlive) {
             return;
@@ -277,6 +284,20 @@ class bestScene extends Phaser.Scene {
                 break;
             }
         }
+        if (this.enemyHealth <= 0) {
+            this.scene.start("overworldScene")
+            this.playerHealth = 100;
+            this.enemyHealth = 100;
+            this.healthBarX = 225;
+            this.enemyHealthBarX = 1125;
+            this.player.x = 100; 
+            this.player.y = 100;
+            this.endGame = true
+        }
+
+        if (this.endGame == true) {
+            this.reset();
+        }
 }
     startJump() {
         this.timer = this.time.addEvent({
@@ -301,6 +322,13 @@ class bestScene extends Phaser.Scene {
         //this.healthBarX = 225;
         //this.player.x = 100; 
         //this.player.y = 100;        
+    }
+    reset() {
+        this.playerHealth = 100;
+        this.enemyHealth = 100;
+        this.healthBarX = 225;
+        this.enemyHealthBarX = 1125;
+        this.endGame = false;   
     }
 }
 
@@ -365,5 +393,12 @@ function healthBar(scene) {
         scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
         scene.playerHealth -= 0.5;
         scene.healthBarX -= 1;
+    }
+}
+function enemyHealthBar(scene) {
+    if (scene.enemyHealth >= 0) {
+        scene.rect = scene.add.rectangle(scene.enemyHealthBarX, 75, scene.enemyHealth * 4, 65, 0xff0000).setStrokeStyle(4, 0x000000);
+        scene.enemyHealth -= 0.5;
+        scene.enemyHealthBarX -= 1;
     }
 }
