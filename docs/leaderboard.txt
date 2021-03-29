@@ -1,0 +1,24 @@
+Since it would require the same amount of bullets to defeat each boss, 
+a score would have to be calculated by how few beans a player fires to win the game. 
+This metric would determine the best score because it would imply that the player did not miss too many times and was able to defeat the boss quickly. 
+We would need variables for how many beans hit, how many beans fire in addition to the required amount needed to defeat the boss, how many total beans fire, the score from how many hits you get, and the total score. 
+If it takes 50 hits to defeat the boss, then the max points the player would be able to get is 50. 
+For every bean that misses the boss, the player loses a half point. 
+If the player does not miss once, then the total score will double. 
+Then, if coins get added to the game, the player will get an additional point for each coin collected. 
+The equation would look something like this:
+
+If (this.beanHit > 50) {
+	this.beanFireAd +=1;
+}
+Else {
+	this.beanFired == 0;
+ }
+
+hitScore = (this.beanHit - this.beanFiredAd);
+
+if (this.beanHit == this.beanFireTotal){
+	totalScore = totalScore* 2
+}
+
+totalScore = hitScore + coinTotal
