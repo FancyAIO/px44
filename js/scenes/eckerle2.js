@@ -66,7 +66,10 @@ var ctrlKey;
 var deleteKey;
 var enterKey;
 var escKey;
-var beanRect; 
+var beanRect;
+var beansFired;
+
+beansFired = 0;
 
 class eckerle2Scene extends Phaser.Scene {
     constructor() {
