@@ -67,48 +67,22 @@ var deleteKey;
 var enterKey;
 var escKey;
 
-class overworldScene extends Phaser.Scene {
-  constructor() {
-      super({
-          key: 'overworldScene',
-          active: true
-      });
-      this.cursor = new Phaser.Math.Vector2();
-      this.playerSpeed = 0.1;
-      this.enemyMaxY = 1200;
-      this.enemyMinY = 20;
-      this.atMenu = true;
-      this.createdMenu = false;
-      this.destroyedMenu = false;
-      this.playerHealth = 100;
-      this.healthBarX = 225;
-  }
-  
-  preload() {
+class aboutScene extends Phaser.Scene {
+    constructor() {
+        super({
+            key: 'aboutScene',
+            active: false
+        });
+    
+        this.cursor = new Phaser.Math.Vector2();
+
+
+}
+preload() {
     this.load.image('background', 'img/Overworld/overworldBackground.PNG');
-      this.load.spritesheet('player', 'img/other/garflief.JPG', {
-
-
-          frameWidth: 120,
-
-          frameHeight: 190,
-
-      });
   }
-
-  create() {
-     // background
-     let bg = this.add.sprite(0, 0, 'background');
-     bg.setOrigin(0, 0);
-    // player
-     this.player = this.physics.add.sprite(40, this.sys.game.config.height / 2, 'player',);
-     // scale down player
-     this.player.setScale(0.2);
-  
-           
-  // player is alive
-  this.isPlayerAlive = true;
-  // reset camera effects
+create(){
+      // reset camera effects
   this.cameras.main.resetFX();
   // sets up keyboard binds
   this.cursors = this.input.keyboard.createCursorKeys();
@@ -180,148 +154,9 @@ class overworldScene extends Phaser.Scene {
   quotesKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.QUOTES);
   tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
-  // setting world bounds function
-  this.player.setCollideWorldBounds(true);
-  }
-  
-  
-  update() {
-    // setting velocity variables
-      this.player.body.setVelocityX(0);
-      this.player.body.setVelocityY(0);
-    // keybinds' actions
-      
-      if (aKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityX(-350);
-      }
-      if (dKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityX(350);
-      }
-      if (wKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityY(-350);
-      }
-      if (sKey.isDown && !this.atMenu) {
-        this.player.body.setVelocityY(350);
-      }
-      if (this.cursors.up.isDown && !this.atMenu) {
-          this.player.body.setVelocityY(-350);
-      }
-      if (this.cursors.down.isDown && !this.atMenu) {
-          this.player.body.setVelocityY(350);
-      }
-      if (this.cursors.right.isDown && !this.atMenu) {
-        this.player.body.setVelocityX(350);
-      }
-      if (this.cursors.left.isDown && !this.atMenu) {
-        this.player.body.setVelocityX(-350);
-      }
-      if (gKey.isDown && !this.atMenu) {
-        this.scene.start("eckerle2Scene")
-      }
-      if (hKey.isDown && !this.atMenu) {
-        this.scene.start("eckerleScene")
-      }
-      // Black screen when switching
-      if (jKey.isDown && !this.atMenu) {
-        this.scene.start("petcaughScene")
-      }
-      if (kKey.isDown && !this.atMenu) {
-        this.scene.start("bestScene")
-      }
-      if (lKey.isDown && !this.atMenu) {
-        this.scene.start("bushekScene")
-      }
-      if (rKey.isDown && !this.atMenu) {
-       
-          var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
-      }
-      // only if the player is alive
-      if (!this.isPlayerAlive) {
-          return;
-      }
-      
-         
-
-      let rect;
-      let text;
-      let title;
-      let intervalID;
-        // loop displays menu and checks if player clicked button
-
-        if (!this.createdMenu) {
-          intervalID = window.setInterval(menu, 100, this);
-          this.createdMenu = false;
-        }
-
-      // stops the loop
-      if (!this.atMenu && !this.destroyedMenu) {
-        for (let i = 1; i < 8; i++) {
-          window.clearInterval(i);
-        } 
-
-        this.destroyedMenu = true;
-      }
-    
-
-
-
-
-    function menu(scene) {
-
-      // displays menu
-        if (!scene.createdMenu) {
-          rect = scene.add.rectangle(675, 400, 300, 150, 0x00ff00).setStrokeStyle(4, 0x000000);
-          text = scene.add.text(623, 375, 'Start', { font: "45px Arial", fill: "#000000" });
-          title = scene.add.text(600, 125, 'PX44', { font: "65px Arial", fill: "#000000" });
-          rect = scene.add.rectangle(675, 650, 600, 200, 0x00ff00).setStrokeStyle(4, 0x000000);
-          title = scene.add.text(575, 550, 'Controls', { font: "65px Arial", fill: "#000000" });
-          text = scene.add.text(450, 600, 'Arrow keys = movement', { font: "45px Arial", fill: "#000000" });
-          text = scene.add.text(410, 640, 'G,K,H,L keys = fight bosses', { font: "45px Arial", fill: "#000000" });
-          text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
-          rect = scene.add.rectangle(980, 450, 128,64, 0x00ff00).setStrokeStyle(4, 0x000000);
-          text = scene.add.text(950,435,'About', { font: "24px Arial", fill: "#000000" });
-          scene.createdMenu = true;
-        }
-         
-
-      // checks if player clicked button
-      if (scene.input.activePointer.isDown &&
-          scene.input.mousePointer.x > 525 &&
-          scene.input.mousePointer.x < 835 &&
-          scene.input.mousePointer.y > 325 &&
-          scene.input.mousePointer.y < 475) {
-        rect.destroy();
-        text.destroy();
-        title.destroy();
-        scene.atMenu = false;
-      }
-
-      if (scene.input.activePointer.isDown &&
-        scene.input.mousePointer.x > 920 &&
-        scene.input.mousePointer.x < 1045 &&
-        scene.input.mousePointer.y > 415 &&
-        scene.input.mousePointer.y < 479) {
-      scene.atMenu = false;
-      this.scene.start("aboutScene")
-      //debugging
-      // console.log("click") 
-      }
-   }
-
-      
-
 }
-
-  gameOver() {
-    this.player.x = 40;
-    this.player.y = this.sys.game.config.height / 2;
-  }
+update(){
+    let text;
+    text = scene.add.text(200,200,'Welcome to Codename: PX44. In this game you are a student at Holy Ghost Prep. Your goal is to go through each year and gradute. However the teachers are trying to stop you. Can you make it to the end and recieve your diploma? Or will you end up at the little people school?',{ font: "35px Arial", fill: "#000000" });
 }
-   function healthBar(scene) {
-    if (xKey.isDown && scene.playerHealth >= 0) {
-        scene.rect = scene.add.rectangle(scene.healthBarX, 75, scene.playerHealth * 4, 65, 0x00ff00).setStrokeStyle(4, 0x000000);
-        scene.playerHealth -= 0.5;
-        scene.healthBarX -= 1;
-    }
 }
-  
