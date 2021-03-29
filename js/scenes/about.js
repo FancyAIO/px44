@@ -82,6 +82,8 @@ preload() {
     this.load.image('background', 'img/Overworld/overworldBackground.PNG');
   }
 create(){
+    let bg = this.add.sprite(0, 0, 'background');
+     bg.setOrigin(0, 0);
       // reset camera effects
   this.cameras.main.resetFX();
   // sets up keyboard binds
@@ -156,7 +158,15 @@ create(){
 
 }
 update(){
-    let text;
-    text = scene.add.text(200,200,'Welcome to Codename: PX44. In this game you are a student at Holy Ghost Prep. Your goal is to go through each year and gradute. However the teachers are trying to stop you. Can you make it to the end and recieve your diploma? Or will you end up at the little people school?',{ font: "35px Arial", fill: "#000000" });
+    if (oKey.isDown && !this.atMenu) {
+        this.scene.start("overworldScene")
+    }
+    this.add.rectangle(679,365, 1300, 260,0x00ff00).setStrokeStyle(4, 0x000000);
+    this.add.text(50,250, 'Welcome to Codename: PX44. In this game you are a student at Holy Ghost Prep. ',{ font: "35px Arial", fill: "#000000" });
+    this.add.text(50,300, 'Your goal is to go through each year and gradute. However, ',{ font: "35px Arial", fill: "#000000" });
+    this.add.text(50,350, ' the teachers are trying to stop you. Can you make it to the end and recieve',{ font: "35px Arial", fill: "#000000" });
+    this.add.text(50,400, ' your diploma? Or will you end up at the little people school?',{ font: "35px Arial", fill: "#000000" });
+    this.add.text(50,450, ' Press O to return to the overworld',{ font: "35px Arial", fill: "#000000" });
+
 }
 }

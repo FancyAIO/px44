@@ -235,6 +235,9 @@ class overworldScene extends Phaser.Scene {
        
           var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
       }
+      if (iKey.isDown && !this.atMenu) {
+        this.scene.start("aboutScene")
+      }
       // only if the player is alive
       if (!this.isPlayerAlive) {
           return;
@@ -278,6 +281,8 @@ class overworldScene extends Phaser.Scene {
           text = scene.add.text(450, 600, 'Arrow keys = movement', { font: "45px Arial", fill: "#000000" });
           text = scene.add.text(410, 640, 'G,K,H,L keys = fight bosses', { font: "45px Arial", fill: "#000000" });
           text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
+          rect = scene.add.rectangle(1000, 515, 328,64, 0x00ff00).setStrokeStyle(4, 0x000000);
+          text = scene.add.text(850, 483, 'I = About page', { font: "45px Arial", fill: "#000000" });
           rect = scene.add.rectangle(980, 450, 128,64, 0x00ff00).setStrokeStyle(4, 0x000000);
           text = scene.add.text(950,435,'About', { font: "24px Arial", fill: "#000000" });
           scene.createdMenu = true;
@@ -296,16 +301,15 @@ class overworldScene extends Phaser.Scene {
         scene.atMenu = false;
       }
 
-      if (scene.input.activePointer.isDown &&
-        scene.input.mousePointer.x > 920 &&
-        scene.input.mousePointer.x < 1045 &&
-        scene.input.mousePointer.y > 415 &&
-        scene.input.mousePointer.y < 479) {
-      scene.atMenu = false;
-      this.scene.start("aboutScene")
-      //debugging
-      // console.log("click") 
-      }
+      // if (scene.input.activePointer.isDown &&
+      //   scene.input.mousePointer.x > 920 &&
+      //   scene.input.mousePointer.x < 1045 &&
+      //   scene.input.mousePointer.y > 415 &&
+      //   scene.input.mousePointer.y < 479) {
+      // this.scene.start("aboutScene")
+      // //debugging
+      // // console.log("click") 
+      // }
    }
 
       
