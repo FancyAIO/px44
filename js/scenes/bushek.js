@@ -224,7 +224,7 @@ class bushekScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#ffffff' });
     this.bean = new bean2(this);
     beanRect = new Phaser.Geom.Rectangle(this.bean.x, this.bean.y, 32, 32);
     }
@@ -374,7 +374,7 @@ class Bullet2 extends Phaser.Physics.Arcade.Sprite
 
         this.setActive(true);
         this.setVisible(true);
-        this.beansFired++;
+        beansFired++;
         this.setVelocityX(300);
     }
 

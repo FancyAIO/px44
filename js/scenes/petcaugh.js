@@ -224,7 +224,7 @@ class petcaughScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#ffffff' });
     }
     
     update() {

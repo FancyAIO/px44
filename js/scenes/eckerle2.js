@@ -282,7 +282,7 @@ class eckerle2Scene extends Phaser.Scene {
               'DEBUG',
               'playerxX: ' + this.player.x,
               'playerY: ' + this.player.y,
-              'beansFired: ' + 0,
+              'beansFired: ' + beansFired,
               'totalDeaths:' + 0
           ]); 
           
@@ -393,7 +393,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
     fire (x, y)
     {
         this.body.reset(x, y);
-        this.beansFired++;
+        beansFired++;
         this.setActive(true);
         this.setVisible(true);
 
