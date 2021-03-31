@@ -67,9 +67,11 @@ var deleteKey;
 var enterKey;
 var escKey;
 var beanRect;
+var text1;
 var beansFired;
-
 beansFired = 0;
+var totalDeaths;
+totalDeaths = 0;
 
 class eckerle2Scene extends Phaser.Scene {
     constructor() {
@@ -225,9 +227,9 @@ class eckerle2Scene extends Phaser.Scene {
     plusKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.PLUS);
     quotesKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.QUOTES);
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
-
+    
     this.player.setCollideWorldBounds(true);
-
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
     this.bean = new bean(this);
 
         // });
@@ -274,9 +276,20 @@ class eckerle2Scene extends Phaser.Scene {
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
         }
-        if (rKey.isDown && !this.atMenu) {
-       
-            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+        if (rKey.isDown && !this.atMenu){
+        
+            this.text1.setText([
+              'DEBUG',
+              'playerxX: ' + this.player.x,
+              'playerY: ' + this.player.y,
+              'beansFired: ' + 0,
+              'totalDeaths:' + 0
+          ]); 
+          
+  
+        }
+        if (tKey.isDown && !this.atMenu){
+          this.text1.setText([''])
         }
         // only if the player is alive
         if (!this.isPlayerAlive) {
@@ -380,11 +393,12 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
     fire (x, y)
     {
         this.body.reset(x, y);
-
+        this.beansFired++;
         this.setActive(true);
         this.setVisible(true);
 
         this.setVelocityX(300);
+        
     }
 
     preUpdate (time, delta)
@@ -421,6 +435,7 @@ class bean extends Phaser.Physics.Arcade.Group
         if (bullet)
         {
             bullet.fire(x, y);
+            
         }
     }
 }

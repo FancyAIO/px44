@@ -20,7 +20,7 @@ Joe and jaime: Working on developing player movement and Boss mechanics
 
 Syed and Shri: Graphic Design (creating sprites and other images necessary for the game)
 
-Jeeth: Creating and designing the overworld, as well as connecting scenes
+Jeeth: Creating and designing the overworld, as well as connecting scenes, debug mode
 
 Grant: General Javascript, specifically menues
 

@@ -66,11 +66,16 @@ var ctrlKey;
 var deleteKey;
 var enterKey;
 var escKey;
+var text1;
+var beansFired;
+beansFired = 0;
+var totalDeaths;
+totalDeaths = 0;
 
 class finalbossScene extends Phaser.Scene {
     constructor() {
         super({
-            key: 'eckerle2Scene',
+            key: 'finalbossScene',
             active: false
         });
     
@@ -219,7 +224,7 @@ class finalbossScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-        
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
         this.bean = new bean(this);
 
         // });
@@ -265,9 +270,20 @@ class finalbossScene extends Phaser.Scene {
         if (oKey.isDown && !this.atMenu) {
             this.scene.start("overworldScene")
         }
-        if (rKey.isDown && !this.atMenu) {
-       
-            var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
+        if (rKey.isDown && !this.atMenu){
+        
+            this.text1.setText([
+              'DEBUG',
+              'x: ' + this.player.x,
+              'y: ' + this.player.y,
+              'beansFired: ' + 0,
+              'totalDeaths:' + 0
+          ]); 
+          
+  
+        }
+        if (tKey.isDown && !this.atMenu){
+          this.text1.setText([''])
         }
         // only if the player is alive
         if (!this.isPlayerAlive) {
@@ -341,7 +357,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
 
         this.setActive(true);
         this.setVisible(true);
-
+        this.beansFired++;
         this.setVelocityX(300);
     }
 
