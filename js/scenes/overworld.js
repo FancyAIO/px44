@@ -339,6 +339,7 @@ class overworldScene extends Phaser.Scene {
   gameOver() {
     this.player.x = 40;
     this.player.y = this.sys.game.config.height / 2;
+    totalDeaths++;
   }
 }
    function healthBar(scene) {

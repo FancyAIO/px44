@@ -296,7 +296,6 @@ class bushekScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
-                //this.gameOver();
                 //break;
             }
             if (this.playerHealth <= 0) {
@@ -351,6 +350,7 @@ class bushekScene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.player.x = 100; 
         this.player.y = 100;   
+        totalDeaths++;
 } 
     reset() {
         this.playerHealth = 100;

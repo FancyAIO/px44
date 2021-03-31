@@ -320,6 +320,7 @@ class eckerle2Scene extends Phaser.Scene {
 
             if (this.playerHealth <= 0) {
                 this.gameOver();
+                
                 break;
             }
 
@@ -373,6 +374,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.player.x = 100; 
         this.player.y = 100;   
+        totalDeaths++;
     } 
     reset() {
         this.playerHealth = 100;
