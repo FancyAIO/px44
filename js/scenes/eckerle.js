@@ -310,10 +310,12 @@ class eckerleScene extends Phaser.Scene {
         }
 }
     gameOver() {   
-        this.playerHealth = 100;
-        this.healthBarX = 225;
-        this.player.x = 100; 
-        this.player.y = 100;     
+        //Commented out due to bug where boss instantly kills player
+        // this.playerHealth = 100;
+        // this.healthBarX = 225;
+        // this.player.x = 100; 
+        // this.player.y = 100;     
+        totalDeaths++;
     }
 }
 

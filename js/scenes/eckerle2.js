@@ -282,7 +282,7 @@ class eckerle2Scene extends Phaser.Scene {
               'DEBUG',
               'playerxX: ' + this.player.x,
               'playerY: ' + this.player.y,
-              'beansFired: ' + 0,
+              'beansFired: ' + beansFired,
               'totalDeaths:' + 0
           ]); 
           
@@ -320,6 +320,7 @@ class eckerle2Scene extends Phaser.Scene {
 
             if (this.playerHealth <= 0) {
                 this.gameOver();
+                
                 break;
             }
 
@@ -373,6 +374,7 @@ class eckerle2Scene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.player.x = 100; 
         this.player.y = 100;   
+        totalDeaths++;
     } 
     reset() {
         this.playerHealth = 100;
@@ -393,7 +395,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
     fire (x, y)
     {
         this.body.reset(x, y);
-        this.beansFired++;
+        beansFired++;
         this.setActive(true);
         this.setVisible(true);
 

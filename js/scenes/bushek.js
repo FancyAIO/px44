@@ -224,7 +224,7 @@ class bushekScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#ffffff' });
     this.bean = new bean2(this);
     beanRect = new Phaser.Geom.Rectangle(this.bean.x, this.bean.y, 32, 32);
     }
@@ -296,7 +296,6 @@ class bushekScene extends Phaser.Scene {
             // enemy collision
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), enemies[i].getBounds())) {
                 healthBar(this);
-                //this.gameOver();
                 //break;
             }
             if (this.playerHealth <= 0) {
@@ -351,6 +350,7 @@ class bushekScene extends Phaser.Scene {
         this.enemyHealthBarX = 1125;
         this.player.x = 100; 
         this.player.y = 100;   
+        totalDeaths++;
 } 
     reset() {
         this.playerHealth = 100;
@@ -374,7 +374,7 @@ class Bullet2 extends Phaser.Physics.Arcade.Sprite
 
         this.setActive(true);
         this.setVisible(true);
-        this.beansFired++;
+        beansFired++;
         this.setVelocityX(300);
     }
 

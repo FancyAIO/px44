@@ -340,7 +340,8 @@ class finalbossScene extends Phaser.Scene {
         this.playerHealth = 100;
         this.healthBarX = 225;
         this.player.x = 100; 
-        this.player.y = 100;   
+        this.player.y = 100; 
+        totalDeaths++;  
     } 
 }
 
@@ -357,7 +358,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
 
         this.setActive(true);
         this.setVisible(true);
-        this.beansFired++;
+        beansFired++;
         this.setVelocityX(300);
     }
 

@@ -226,7 +226,7 @@ class bestScene extends Phaser.Scene {
     tabKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB);
 
     this.player.setCollideWorldBounds(true);
-    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
+    this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#ffffff' });
     this.bean = new bean3(this);
     }
     
@@ -338,7 +338,8 @@ class bestScene extends Phaser.Scene {
         //this.playerHealth = 100;
         //this.healthBarX = 225;
         //this.player.x = 100; 
-        //this.player.y = 100;        
+        //this.player.y = 100;   
+        totalDeaths++;     
     }
     reset() {
         this.playerHealth = 100;
@@ -359,7 +360,7 @@ class Bullet3 extends Phaser.Physics.Arcade.Sprite
     fire (x, y)
     {
         this.body.reset(x, y);
-        this.beansFired++;
+        beansFired++;
         this.setActive(true);
         this.setVisible(true);
 
