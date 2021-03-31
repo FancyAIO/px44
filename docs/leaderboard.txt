@@ -5,7 +5,7 @@ We would need variables for how many beans hit, how many beans fire in addition 
 If it takes 50 hits to defeat the boss, then the max points the player would be able to get is 50. 
 For every bean that misses the boss, the player loses a half point. 
 If the player does not miss once, then the total score will double. 
-Then, if coins get added to the game, the player will get an additional point for each coin collected. 
+Then, when coins get added to the game, the player will get an additional point for each coin collected. 
 The equation would look something like this:
 
 If (this.beanHit > 50) {

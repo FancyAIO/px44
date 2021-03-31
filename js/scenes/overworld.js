@@ -66,6 +66,12 @@ var ctrlKey;
 var deleteKey;
 var enterKey;
 var escKey;
+var text1;
+var beansFired;
+beansFired = 0;
+var totalDeaths;
+totalDeaths = 0;
+
 
 class overworldScene extends Phaser.Scene {
   constructor() {
@@ -182,10 +188,12 @@ class overworldScene extends Phaser.Scene {
 
   // setting world bounds function
   this.player.setCollideWorldBounds(true);
+  this.text1 = this.add.text(10, 10, '', { font: '32px Gotham Bold', fill: '#0' });
   }
   
   
   update() {
+    
     // setting velocity variables
       this.player.body.setVelocityX(0);
       this.player.body.setVelocityY(0);
@@ -231,12 +239,23 @@ class overworldScene extends Phaser.Scene {
       if (lKey.isDown && !this.atMenu) {
         this.scene.start("bushekScene")
       }
-      if (rKey.isDown && !this.atMenu) {
-       
-          var g1 = this.add.grid(0, 0, 5000, 5000, 64, 64).setAltFillStyle().setOutlineStyle(100000);
-      }
       if (iKey.isDown && !this.atMenu) {
         this.scene.start("aboutScene")
+      }
+      if (rKey.isDown && !this.atMenu){
+        
+          this.text1.setText([
+            'DEBUG',
+            'playerX: ' + this.player.x,
+            'playerY: ' + this.player.y,
+            'beansFired: ' + 0,
+            'totalDeaths:' + 0
+        ]); 
+        
+
+      }
+      if (tKey.isDown && !this.atMenu){
+        this.text1.setText([''])
       }
       // only if the player is alive
       if (!this.isPlayerAlive) {
@@ -283,8 +302,8 @@ class overworldScene extends Phaser.Scene {
           text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
           rect = scene.add.rectangle(1000, 515, 328,64, 0x00ff00).setStrokeStyle(4, 0x000000);
           text = scene.add.text(850, 483, 'I = About page', { font: "45px Arial", fill: "#000000" });
-          rect = scene.add.rectangle(980, 450, 128,64, 0x00ff00).setStrokeStyle(4, 0x000000);
-          text = scene.add.text(950,435,'About', { font: "24px Arial", fill: "#000000" });
+          rect = scene.add.rectangle(1000, 450, 300,64, 0x00ff00).setStrokeStyle(4, 0x000000);
+          text = scene.add.text(870,435,'R = Debug on/update, T = Debug off', { font: "16px Arial", fill: "#000000" });
           scene.createdMenu = true;
         }
          
@@ -301,6 +320,7 @@ class overworldScene extends Phaser.Scene {
         scene.atMenu = false;
       }
 
+      //Could not get button press to go to aboutScene to work
       // if (scene.input.activePointer.isDown &&
       //   scene.input.mousePointer.x > 920 &&
       //   scene.input.mousePointer.x < 1045 &&
