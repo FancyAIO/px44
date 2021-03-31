@@ -298,7 +298,7 @@ class overworldScene extends Phaser.Scene {
           rect = scene.add.rectangle(675, 650, 600, 200, 0x00ff00).setStrokeStyle(4, 0x000000);
           title = scene.add.text(575, 550, 'Controls', { font: "65px Arial", fill: "#000000" });
           text = scene.add.text(450, 600, 'Arrow keys = movement', { font: "45px Arial", fill: "#000000" });
-          text = scene.add.text(410, 640, 'G,K,H,L keys = fight bosses', { font: "45px Arial", fill: "#000000" });
+          text = scene.add.text(410, 640, 'G,H,J,K,L keys = fight bosses', { font: "40px Arial", fill: "#000000" });
           text = scene.add.text(450, 683, 'F key = fire beans', { font: "45px Arial", fill: "#000000" });
           rect = scene.add.rectangle(1000, 515, 328,64, 0x00ff00).setStrokeStyle(4, 0x000000);
           text = scene.add.text(850, 483, 'I = About page', { font: "45px Arial", fill: "#000000" });
